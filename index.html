@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shining Stars Networking Group</title>
+  <style>
+    :root {
+      --gold: #f0b429;
+      --navy: #1a2a4a;
+      --navy-light: #243656;
+      --bg: #f4f6fa;
+      --card-bg: #ffffff;
+      --text: #1e2330;
+      --muted: #5a6478;
+      --border: #e2e6ef;
+      --link: #1a5cc4;
+      --radius: 12px;
+      --shadow: 0 2px 8px rgba(0,0,0,0.09);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: var(--navy); color: #fff; padding: 32px 24px 28px; text-align: center; }
+    .star-icon { font-size: 2rem; margin-bottom: 6px; }
+    header h1 { font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; color: var(--gold); letter-spacing: 0.5px; }
+    header p { margin-top: 6px; font-size: 1rem; color: #b8c4dd; }
+    .toolbar-wrap { background: var(--navy-light); padding: 18px 24px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center; }
+    .toolbar-wrap input, .toolbar-wrap select { padding: 11px 14px; border: 1.5px solid #3a4f72; border-radius: 8px; background: #1e3255; color: #e8edf5; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+    .toolbar-wrap input { min-width: 260px; flex: 1; max-width: 400px; }
+    .toolbar-wrap select { min-width: 200px; }
+    .toolbar-wrap input::placeholder { color: #7a8fad; }
+    .toolbar-wrap input:focus, .toolbar-wrap select:focus { border-color: var(--gold); }
+    .toolbar-wrap select option { background: #1a2a4a; color: #e8edf5; }
+    main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+    .status-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; font-size: 0.9rem; color: var(--muted); }
+    .badge { background: var(--navy); color: var(--gold); border-radius: 20px; padding: 3px 12px; font-size: 0.82rem; font-weight: 700; }
+    .cat-section { margin-bottom: 38px; }
+    .cat-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
+    .cat-icon { font-size: 1.3rem; }
+    .cat-header h2 { font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+    .cat-count { margin-left: auto; background: var(--border); color: var(--muted); border-radius: 20px; padding: 2px 10px; font-size: 0.8rem; font-weight: 600; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .member-card { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 20px; border: 1px solid var(--border); transition: transform 0.15s, box-shadow 0.15s; display: flex; flex-direction: column; gap: 6px; }
+    .member-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.13); }
+    .biz-name { font-size: 1rem; font-weight: 700; color: var(--navy); }
+    .member-name { font-size: 0.88rem; color: var(--muted); }
+    .description { font-size: 0.9rem; color: var(--text); margin-top: 4px; line-height: 1.5; }
+    .referral-block { margin-top: 8px; background: #f0f4fb; border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: 7px 10px; font-size: 0.85rem; color: var(--text); }
+    .referral-block strong { color: var(--navy); display: block; margin-bottom: 2px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .website-link { margin-top: 10px; display: inline-flex; align-items: center; gap: 5px; font-size: 0.85rem; color: var(--link); text-decoration: none; font-weight: 600; }
+    .website-link:hover { text-decoration: underline; }
+    .empty { text-align: center; padding: 60px 20px; color: var(--muted); }
+    .empty .empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .empty h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .error-msg { background: #fff0f0; border: 1px solid #f5c0c0; color: #b00020; border-radius: 8px; padding: 14px 18px; font-weight: 600; }
+    footer { background: var(--navy); color: #7a8fad; text-align: center; padding: 22px 20px; font-size: 0.85rem; }
+    footer strong { color: var(--gold); }
+    .loader { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 0.95rem; padding: 30px 0; }
+    .spinner { width: 22px; height: 22px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (max-width: 600px) {
+      header { padding: 24px 16px 20px; }
+      .toolbar-wrap { padding: 14px 16px; }
+      .toolbar-wrap input { min-width: unset; }
+      main { padding: 20px 14px 50px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="star-icon">⭐</div>
+    <h1>Shining Stars Networking Group</h1>
+    <p>Local business owners supporting local families &mdash; Fort Myers, FL</p>
+  </header>
+  <div class="toolbar-wrap">
+    <input id="q" type="search" placeholder="🔍  Search name, business, or services…" />
+    <select id="cat"><option value="">All Categories</option></select>
+  </div>
+  <main>
+    <div class="status-bar" id="status-bar">
+      <div class="loader"><div class="spinner"></div> Loading directory…</div>
+    </div>
+    <div id="directory"></div>
+  </main>
+  <footer>
+    <strong>Shining Stars Networking Group</strong> &mdash; Fort Myers, Florida<br/>
+    Connecting local businesses with local families.
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script>
+    const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSZTmTUt2DLDOQSkpALwRIItUzYKm7nChMLumbHy5ll9g4QivmiDsvOYJgsg546c3R_KkSMtDQWd3Vk/pub?gid=0&single=true&output=csv";
+    const CATEGORY_ICONS = {
+      "Accounting & Tax Services":       "📊",
+      "Marketing & Media":               "📣",
+      "Legal & Mediation Services":      "⚖️",
+      "Real Estate & Property Services": "🏡",
+      "Mortgage & Lending":              "🏦",
+      "Insurance & Financial Services":  "🛡️",
+      "Home Improvement & Construction": "🔨",
+      "Security & Smart Technology":     "🔒",
+      "Health & Wellness":               "💊",
+      "Home Maintenance & Cleaning":     "🧹",
+      "Beauty & Personal Services":      "💄",
+      "Automotive & Marine":             "🚗",
+      "Travel & Hospitality":            "✈️",
+      "Retail & Consumer Products":      "🛒",
+      "Water, Utility & Environmental Services": "💧"
+    };
+    const statusBar = document.getElementById("status-bar");
+    const dirEl     = document.getElementById("directory");
+    const qEl       = document.getElementById("q");
+    const catEl     = document.getElementById("cat");
+    let records     = [];
+    function esc(str) {
+      return String(str ?? "").replace(/[&<>"']/g, ch =>
+        ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+    }
+    function normalizeUrl(url) {
+      const s = String(url ?? "").trim();
+      if (!s) return "";
+      return /^https?:\/\//i.test(s) ? s : "https://" + s;
+    }
+    function buildCategoryOptions(items) {
+      const cats = [...new Set(items.map(r => r.Category).filter(Boolean))].sort();
+      catEl.innerHTML = `<option value="">All Categories</option>` +
+        cats.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join("");
+    }
+    function render() {
+      const q = qEl.value.trim().toLowerCase();
+      const c = catEl.value;
+      const filtered = records.filter(r => {
+        if (c && r.Category !== c) return false;
+        if (!q) return true;
+        const hay = `${r.DisplayName} ${r.BusinessName} ${r.Category} ${r.ShortDescription} ${r.IdealReferrals}`.toLowerCase();
+        return hay.includes(q);
+      });
+      statusBar.innerHTML = `
+        <span>Showing</span>
+        <span class="badge">${filtered.length}</span>
+        <span>of ${records.length} members</span>`;
+      if (filtered.length === 0) {
+        dirEl.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><h3>No matches found</h3><p>Try a different search term or category.</p></div>`;
+        return;
+      }
+      const grouped = {};
+      filtered.forEach(r => { (grouped[r.Category] ??= []).push(r); });
+      const cats = Object.keys(grouped).sort();
+      dirEl.innerHTML = cats.map(cat => {
+        const icon = CATEGORY_ICONS[cat] || "🏢";
+        const cards = grouped[cat].map(r => {
+          const site = normalizeUrl(r.Website);
+          return `
+            <div class="member-card">
+              <div class="biz-name">${esc(r.BusinessName)}</div>
+              <div class="member-name">${esc(r.DisplayName)}</div>
+              <div class="description">${esc(r.ShortDescription)}</div>
+              <div class="referral-block">
+                <strong>Ideal Referrals</strong>
+                ${esc(r.IdealReferrals)}
+              </div>
+              ${site ? `<a class="website-link" href="${esc(site)}" target="_blank" rel="noopener">🌐 Visit Website</a>` : ""}
+            </div>`;
+        }).join("");
+        return `
+          <section class="cat-section">
+            <div class="cat-header">
+              <span class="cat-icon">${icon}</span>
+              <h2>${esc(cat)}</h2>
+              <span class="cat-count">${grouped[cat].length} member${grouped[cat].length !== 1 ? "s" : ""}</span>
+            </div>
+            <div class="card-grid">${cards}</div>
+          </section>`;
+      }).join("");
+    }
+    function load() {
+      statusBar.innerHTML = `<div class="loader"><div class="spinner"></div> Loading directory…</div>`;
+      Papa.parse(SHEET_URL, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete(results) {
+          records = (results.data || [])
+            .map(row => ({
+              DisplayName:      row["Display Name"]      ?? "",
+              BusinessName:     row["Business Name"]     ?? "",
+              Category:         row["Category"]          ?? "",
+              ShortDescription: row["Short Description"] ?? "",
+              IdealReferrals:   row["Ideal Referrals"]   ?? "",
+              Website:          row["Website"]           ?? "",
+              PublicListing:    row["Public"]            ?? ""
+            }))
+            .filter(r => r.PublicListing.trim().toLowerCase() === "yes");
+          buildCategoryOptions(records);
+          statusBar.innerHTML = `<span>Showing</span><span class="badge">${records.length}</span><span>of ${records.length} members</span>`;
+          render();
+        },
+        error(err) {
+          statusBar.innerHTML = `<div class="error-msg">Could not load directory. Please try refreshing the page.</div>`;
+          console.error(err);
+        }
+      });
+    }
+    qEl.addEventListener("input", render);
+    catEl.addEventListener("change", render);
+    load();
+  </script>
+</body>
+</html>
