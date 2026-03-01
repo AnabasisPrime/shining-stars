@@ -286,35 +286,16 @@ const loaderDiv = statusBar.querySelector('.loader');
 // Fetch data from Google Sheets
 async function fetchSheetData() {
   try {
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_NAME}`;
+    const url = 'https://script.google.com/macros/s/AKfycbxhNMan98GZuAouTU6-SJ42VMPZobFEts-r5qL967kJzLRwzrPtC_S-YJJZQSr-wVCYfQ/exec';
     const response = await fetch(url);
-    const csvText = await response.text();
+    const result = await response.json();
     
-    // Parse CSV
-    const lines = csvText.split('\n').filter(line => line.trim());
-    if (lines.length > 1) {
-      const dataLines = lines.slice(1);
-      allMembers = dataLines.map(line => {
-        const values = line.match(/(?:"([^"]*)"|([^,]+)|(?<=,)(?=,)|(?<=,)$)/g) || [];
-        const cleanValues = values.map(v => v ? v.replace(/^"|"$/g, '').trim() : '');
-        
-        return {
-          displayName: cleanValues[0] || '',
-          businessName: cleanValues[1] || '',
-          category: cleanValues[2] || '',
-          shortDescription: cleanValues[3] || '',
-          idealReferrals: cleanValues[4] || '',
-          website: cleanValues[5] || '',
-          hasPhoto: cleanValues[6] === 'Yes',
-          phone: cleanValues[7] || '',
-          email: cleanValues[8] || ''
-        };
-      });
-      
+    if (result.result === 'success' && result.data) {
+      allMembers = result.data;
       populateCategories();
       filteredMembers = [...allMembers];
       renderDirectory();
-    }
+    }  
   } catch (error) {
     console.error('Error fetching data:', error);
     directoryDiv.innerHTML = '<div class="empty"><div class="empty-icon">⚠️</div><p>Unable to load member data. Please make sure the Google Sheet is published to the web.</p></div>';
