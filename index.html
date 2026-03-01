@@ -266,7 +266,7 @@ textarea{resize:vertical;min-height:100px}.form-submit{width:100%;padding:12px;b
 </main>
 <footer>
 <p><strong>Shining Stars Networking Group</strong> — Fort Myers, Florida<br/>Connecting local businesses with local families.</p>
-</footer>
+</footer><div id="pw-overlay" style="display:none"><div class="pw-box"><h2>Members Portal</h2><p>Enter portal password</p><input class="pw-input" id="pw-input" type="password" placeholder="Password"><button class="pw-submit" onclick="checkPassword()">Enter</button><div class="pw-error" id="pw-error">Incorrect password.</div></div></div><div id="portal-overlay" style="display:none"><div class="portal-header"><div class="portal-title"><h2>Members Portal</h2></div><button class="portal-close" onclick="closePortal()">Close</button></div><div class="portal-tabs"><div class="portal-tab active" data-tab="stats" onclick="switchTab('stats')">Stats</div><div class="portal-tab" data-tab="members" onclick="switchTab('members')">Members</div><div class="portal-tab" data-tab="referrals" onclick="switchTab('referrals')">Referrals</div></div><div class="portal-content"><div class="ptab active" id="ptab-stats"><p style="color:#888">Stats loading...</p></div><div class="ptab" id="ptab-members"><p style="color:#888">Members list.</p></div><div class="ptab" id="ptab-referrals"><p style="color:#888">Referrals.</p></div></div></div>
 </div>
 
 <script>
@@ -422,7 +422,7 @@ function getCategoryIcon(category) {
 searchInput.addEventListener('input', filterMembers);
 categorySelect.addEventListener('change', filterMembers);
 
-// Initialize
+function openPortal(){document.getElementById('pw-overlay').style.display='flex';} function closePortal(){document.getElementById('portal-overlay').style.display='none';document.getElementById('pw-overlay').style.display='none';} function checkPassword(){var v=document.getElementById('pw-input').value;if(v==='1956'){document.getElementById('pw-overlay').style.display='none';document.getElementById('portal-overlay').style.display='block';}else{document.getElementById('pw-error').style.display='block';}} function switchTab(t){document.querySelectorAll('.portal-tab').forEach(function(x){x.classList.remove('active');});document.querySelectorAll('.ptab').forEach(function(x){x.classList.remove('active');});document.querySelector('[data-tab="'+t+'"]').classList.add('active');document.getElementById('ptab-'+t).classList.add('active');} // Initialize
 fetchSheetData();
 
 // Starfield animation
