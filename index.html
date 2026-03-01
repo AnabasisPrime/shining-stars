@@ -196,7 +196,7 @@
               <div class="contact-grid">
                 ${r.Phone ? `<a href="tel:${phoneClean}" class="contact-btn">📞 Call</a>` : ""}
                 ${r.Email ? `<a href="mailto:${esc(r.Email)}" class="contact-btn">✉️ Email</a>` : ""}
-                ${r.Website ? `<a href="${esc(r.Website)}" target="_blank" class="contact-btn wide">🌐 Website</a>` : ""}
+                ${r.Website ? `<a href="${esc(r.Website.match(/^https?:\/\//) ? r.Website : 'https://' + r.Website)}" target="_blank" class="contact-btn wide">🌐 Website</a>` : ""}
               </div>
 
               <div class="referral-block">
