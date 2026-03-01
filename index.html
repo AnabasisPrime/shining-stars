@@ -294,7 +294,7 @@ async function fetchSheetData() {
     if (result.result === 'success' && result.data) {
       allMembers = result.data;
       populateCategories();
-      filteredMembers = [...allMembers];
+      filteredMembers = [...allMembers];loadPortalStats();populateReferralDropdowns();
       renderDirectory();
     }  
   } catch (error) {
