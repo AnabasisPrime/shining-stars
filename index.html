@@ -291,11 +291,21 @@ async function fetchSheetData() {
     const response = await fetch(url);
     const csvText = await response.text();
     
-    if (result.result === 'success' && result.data) {
-      allMembers = result.data;
-      populateCategories();
-      filteredMembers = [...allMembers];loadPortalStats();populateReferralDropdowns();
-      renderDirectory();
+// Parse CSV into rows
+const rows = csvText.trim().split('\n').map(r => r.split(','));
+const headers = rows[0].map(h => h.trim());
+
+allMembers = rows.slice(1).map(row => {
+  const obj = {};
+  headers.forEach((h, i) => obj[h] = row[i] ? row[i].trim() : '');
+  return obj;
+});
+
+populateCategories();
+filteredMembers = [...allMembers];
+loadPortalStats();
+populateReferralDropdowns();
+renderDirectory();
     }  
   } catch (error) {
     console.error('Error fetching data:', error);
