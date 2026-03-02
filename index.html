@@ -382,7 +382,7 @@ function renderDirectory() {
   let html = '';
   Object.keys(byCategory).sort().forEach(category => {
     category = category.replace(/^"|"$/g, '').trim();
-    const members = byCategory[category];
+    const members = byCategory[category] || [];
     const icon = getCategoryIcon(category);
     
     html += `
