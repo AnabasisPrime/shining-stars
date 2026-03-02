@@ -287,7 +287,7 @@ const loaderDiv = statusBar.querySelector('.loader');
 // Fetch data from Google Sheets
 async function fetchSheetData() {
   try {
-    const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSZTmTUt2DLDOQSkpALwRlItUzYKm7nChMLumbHy5ll9g4QivmiDsvOYJgsg546c3R_KkSMtDQWd3Vk/pub?output=csv';
+    const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSZTmTUt2DLDOQSkpALwRIItUzYKm7nChMLumbHy5ll9g4QivmiDsvOYJgsg546c3R_KkSMtDQWd3Vk/pub?output=csv';
     const response = await fetch(url);
     const csvText = await response.text();
     
