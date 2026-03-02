@@ -381,7 +381,7 @@ function createMemberCard(member) {
   return `
     <div class="member-card">
       <div class="photo-frame">
-        ${member.hasPhoto ? `<img src="photos/${member.displayName.replace(/\s+/g, '_')}.jpg" alt="${member.displayName}">` : initials}
+        ${member.photoUrl ? `<img src="${member.photoUrl}" alt="${member.displayName}">` : member.hasPhoto ? `<img src="photos/${member.displayName.replace(/\s+/g, '_')}.jpg" alt="${member.displayName}">` : initials}
       </div>
       <div class="biz-info">
         <div class="biz-name">${member.businessName}</div>
