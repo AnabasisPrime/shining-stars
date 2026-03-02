@@ -295,9 +295,26 @@ async function fetchSheetData() {
 const rows = csvText.trim().split('\n').map(r => r.split(','));
 const headers = rows[0].map(h => h.trim());
 
+const HEADER_MAP = {
+  "Display Name": "displayName",
+  "Business Name": "businessName",
+  "Short Description": "shortDescription",
+  "Ideal Referrals": "idealReferrals",
+  "Category": "category",
+  "Email": "email",
+  "Phone": "phone",
+  "Website": "website",
+  "photoUrl": "photoUrl",
+  "PhotoUrl": "photoUrl",
+  "Photo URL": "photoUrl"
+};
+
 allMembers = rows.slice(1).map(row => {
   const obj = {};
-  headers.forEach((h, i) => obj[h] = row[i] ? row[i].trim() : '');
+  headers.forEach((h, i) => {
+    const key = HEADER_MAP[h] || h;
+    obj[key] = row[i] ? row[i].trim() : '';
+  });
   return obj;
 });
 
