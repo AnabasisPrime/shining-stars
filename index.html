@@ -289,7 +289,7 @@ async function fetchSheetData() {
   try {
     const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSZTmTUt2DLDOQSkpALwRIItUzYKm7nChMLumbHy5ll9g4QivmiDsvOYJgsg546c3R_KkSMtDQWd3Vk/pub?gid=0&single=true&output=csv';
     const response = await fetch(url);
-    const result = await response.json();
+    const csvText = await response.text();
     
     if (result.result === 'success' && result.data) {
       allMembers = result.data;
