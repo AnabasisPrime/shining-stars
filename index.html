@@ -292,26 +292,21 @@ async function fetchSheetData() {
     const csvText = await response.text();
     
 // Parse CSV into rows
-const rows = csvText
-  .trim()
-  .split(/\r?\n/)
-  .map(r => r.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g).map(c => c.replace(/^"|"$/g, '')));
+const rows = csvText.trim().split('\n').map(r => r.split(','));
 const headers = rows[0].map(h => h.trim());
 
 const HEADER_MAP = {
-  "Name": "displayName",
+  "Display Name": "displayName",
   "Business Name": "businessName",
   "Short Description": "shortDescription",
-  "Description": "shortDescription",
   "Ideal Referrals": "idealReferrals",
-  "Referrals": "idealReferrals",
   "Category": "category",
   "Email": "email",
   "Phone": "phone",
   "Website": "website",
-  "Photo URL": "photoUrl",
-  "photoUr": "photoUrl",
-  "Public": "publish"
+  "photoUrl": "photoUrl",
+  "PhotoUrl": "photoUrl",
+  "Photo URL": "photoUrl"
 };
 
 allMembers = rows.slice(1).map(row => {
@@ -420,9 +415,9 @@ const initials = name
         ${(MEMBER_PHOTOS[member.displayName]||member.photoUrl) ? `<img src="${MEMBER_PHOTOS[member.displayName]||member.photoUrl}" alt="${member.displayName}">` : member.hasPhoto ? `<img src="photos/${member.displayName.replace(/\s+/g, '_')}.jpg" alt="${member.displayName}">` : initials}
       </div>
       <div class="biz-info">
-        <div class="biz-name">${member.displayName}</div>
+        <div class="biz-name">${member.businessName}</div>
         <div class="member-name">${member.displayName}</div>
-        <div class="description">${member.shortDescription || ''}
+        <div class="description">${member.shortDescription}</div>
       </div>
       <div class="contact-grid">
         ${member.phone ? `<a href="tel:${member.phone}" class="contact-btn">📞 Call</a>` : ''}
