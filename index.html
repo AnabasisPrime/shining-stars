@@ -422,7 +422,7 @@ const initials = name
       <div class="biz-info">
         <div class="biz-name">${member.displayName}</div>
         <div class="member-name">${member.displayName}</div>
-        <div class="description">${member.shortDescription}</div>
+        <div class="description">${member.shortDescription || ''}
       </div>
       <div class="contact-grid">
         ${member.phone ? `<a href="tel:${member.phone}" class="contact-btn">📞 Call</a>` : ''}
