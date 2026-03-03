@@ -423,7 +423,7 @@ const initials = name
         ${(MEMBER_PHOTOS[member.displayName]||member.photoUrl) ? `<img src="${MEMBER_PHOTOS[member.displayName]||member.photoUrl}" alt="${member.displayName}">` : member.hasPhoto ? `<img src="photos/${member.displayName.replace(/\s+/g, '_')}.jpg" alt="${member.displayName}">` : initials}
       </div>
       <div class="biz-info">
-        <div class="biz-name">${member.businessName}</div>
+        <div class="biz-name">${member.displayName}</div>
         <div class="member-name">${member.displayName}</div>
         <div class="description">${member.shortDescription}</div>
       </div>
