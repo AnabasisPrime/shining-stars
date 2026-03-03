@@ -292,7 +292,10 @@ async function fetchSheetData() {
     const csvText = await response.text();
     
 // Parse CSV into rows
-const rows = csvText.trim().split('\n').map(r => r.split(','));
+const rows = csvText
+  .trim()
+  .split(/\r?\n/)
+  .map(r => r.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g).map(c => c.replace(/^"|"$/g, '')));
 const headers = rows[0].map(h => h.trim());
 
 const HEADER_MAP = {
