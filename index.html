@@ -216,49 +216,47 @@ footer{
 }
 footer strong{color:var(--gold)}
 
-/* ===== ABOUT ALLIANCE ===== */
-.about-section{
-  max-width:1180px;
-  margin:26px auto 0;
+/* ===== ABOUT BAND ===== */
+.about-band{
+  max-width:1320px;
+  margin:24px auto 0;
   padding:0 20px;
 }
-.about-panel{
-  background:rgba(231,237,244,0.94);
-  border:1px solid rgba(145,165,187,0.7);
+.about-shell{
+  background:rgba(229,236,244,0.92);
+  border:1px solid rgba(146,166,188,0.85);
   border-radius:24px;
-  box-shadow:0 18px 40px rgba(15,23,42,0.12);
-  padding:26px 28px 28px;
+  box-shadow:0 12px 30px rgba(15,23,42,0.10);
+  padding:26px 28px;
 }
 .about-kicker{
-  color:#9a6a12;
-  font-size:0.8rem;
+  color:#9b6a0d;
+  font-size:0.82rem;
   font-weight:900;
-  letter-spacing:1.2px;
+  letter-spacing:1px;
   text-transform:uppercase;
   margin-bottom:10px;
 }
-.about-panel h2{
-  color:#1f3c63;
-  font-size:clamp(1.55rem,3.4vw,2.35rem);
-  line-height:1.18;
-  margin-bottom:16px;
-  font-weight:900;
+.about-shell h2{
+  font-size:clamp(1.9rem,3.4vw,3rem);
+  line-height:1.15;
+  color:#18345b;
+  margin-bottom:14px;
 }
-.about-panel p{
-  color:#2f4b6d;
+.about-shell p{
   font-size:1rem;
-  line-height:1.7;
-  font-weight:600;
+  line-height:1.68;
+  color:#29476c;
 }
 .about-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:16px;
-  margin-top:22px;
+  margin-top:20px;
 }
 .about-card{
-  background:rgba(255,255,255,0.34);
-  border:1px solid rgba(145,165,187,0.55);
+  background:rgba(238,243,248,0.84);
+  border:1px solid rgba(157,176,197,0.78);
   border-radius:18px;
   padding:18px 18px 16px;
 }
@@ -269,65 +267,84 @@ footer strong{color:var(--gold)}
   display:flex;
   align-items:center;
   justify-content:center;
-  background:rgba(247,207,103,0.15);
-  border:1px solid rgba(205,176,96,0.55);
-  color:#8d6510;
-  font-size:1.35rem;
-  margin-bottom:12px;
+  background:rgba(247,207,103,0.18);
+  border:1px solid rgba(214,173,69,0.45);
+  font-size:1.25rem;
+  margin:0 auto 14px;
 }
 .about-card h3{
-  color:#1f3c63;
-  font-size:1rem;
-  line-height:1.3;
-  margin-bottom:8px;
-  font-weight:900;
+  font-size:1.05rem;
+  color:#18345b;
+  line-height:1.25;
+  margin:0 0 10px;
+  text-align:center;
 }
 .about-card p{
-  color:#3f5e82;
-  font-size:0.9rem;
-  line-height:1.55;
-  font-weight:600;
-}
-.schedule-panel{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,215,122,0.18);
-  border-radius:14px;
-  padding:18px;
-}
-.schedule-panel h3{
-  color:var(--gold);
-  margin-bottom:12px;
-  font-size:1rem;
-}
-.schedule-meta{
-  display:grid;
-  gap:8px;
-  margin-bottom:16px;
-}
-.schedule-meta div,
-.schedule-times li,
-.schedule-note p{
-  color:#e7edf5;
-  font-size:0.93rem;
-  line-height:1.55;
-}
-.schedule-meta strong,
-.schedule-note strong{color:var(--gold2)}
-.schedule-times{
-  list-style:none;
-  padding:0;
-  margin:0 0 16px;
-  display:grid;
-  gap:8px;
-}
-.schedule-times li{
-  padding:10px 12px;
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(145,165,187,0.32);
-  border-radius:10px;
+  font-size:0.95rem;
+  line-height:1.6;
+  color:#35557c;
 }
 
-@media (max-width:900px){.about-grid{grid-template-columns:1fr}}
+.schedule-wrap{
+  max-width:760px;
+}
+.schedule-panel{
+  background:rgba(223,230,238,0.72);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+.schedule-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:16px 0 18px;
+}
+.schedule-item{
+  background:rgba(255,255,255,0.5);
+  border:1px solid rgba(146,166,188,0.7);
+  border-radius:12px;
+  padding:12px 14px;
+}
+.schedule-day{
+  color:var(--gold);
+  font-weight:800;
+  margin-bottom:4px;
+}
+.schedule-time{
+  color:#fff;
+  font-size:1rem;
+  font-weight:700;
+}
+.zoom-box{
+  background:rgba(49,68,93,0.9);
+  border:1px solid rgba(247,207,103,0.28);
+  border-radius:14px;
+  padding:16px;
+  margin:16px 0;
+}
+.zoom-box h4{
+  color:var(--gold);
+  margin-bottom:10px;
+  font-size:1rem;
+}
+.zoom-line{
+  color:#eef3f8;
+  margin-bottom:6px;
+  font-size:0.95rem;
+}
+.schedule-note{
+  color:#dbe5ef;
+  line-height:1.6;
+  font-size:0.94rem;
+}
+@media (max-width: 900px){
+  .about-grid{grid-template-columns:1fr;}
+}
+@media (max-width: 700px){
+  .schedule-grid{grid-template-columns:1fr;}
+}
+
 @media (max-width:700px){
   .hero-banner{height:190px}
   .card-grid{grid-template-columns:1fr}
@@ -430,11 +447,12 @@ footer strong{color:var(--gold)}
 
 <button class="portal-btn" id="portal-btn" onclick="openPortal()">⚙️ Members Portal</button>
 </header>
-<section class="about-section">
-  <div class="about-panel">
+
+<div class="about-band">
+  <section class="about-shell" aria-labelledby="about-alliance-title">
     <div class="about-kicker">About the Alliance</div>
-    <h2>Professional standards, local relationships, and practical referral value.</h2>
-    <p>The <strong>SWFL Strategic Referral Alliance</strong> is a relationship-driven network of local business owners who believe that trust still matters, service still matters, and strong referrals are earned through consistency. Our members represent established businesses across Southwest Florida and work together to help local families, homeowners, and professionals find reliable services through warm introductions rather than guesswork. The result is a network that is both professional in standards and community-focused in spirit.</p>
+    <h2 id="about-alliance-title">Professional standards, local relationships, and practical referral value.</h2>
+    <p><strong>The SWFL Strategic Referral Alliance</strong> is a relationship-driven network of local business owners who believe that trust still matters, service still matters, and strong referrals are earned through consistency. Our members represent established businesses across Southwest Florida and work together to help local families, homeowners, and professionals find reliable services through warm introductions rather than guesswork. The result is a network that is both professional in standards and community-focused in spirit.</p>
     <div class="about-grid">
       <div class="about-card">
         <div class="about-icon">🤝</div>
@@ -452,8 +470,8 @@ footer strong{color:var(--gold)}
         <p>We support business growth in a way that also strengthens the local community, households, and neighborhoods we serve.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <div class="toolbar-wrap">
 <input type="text" id="q" placeholder="Search members, businesses...">
@@ -467,7 +485,7 @@ footer strong{color:var(--gold)}
 </main>
 <footer>
 <p><strong>SWFL Strategic Referral Alliance</strong> — Fort Myers, Florida<br/>Connecting local businesses with local families.</p>
-</footer><div id="pw-overlay" style="display:none"><div class="pw-box"><h2>Members Portal</h2><p>Enter portal password</p><input class="pw-input" id="pw-input" type="password" placeholder="Password"><button class="pw-submit" onclick="checkPassword()">Enter</button><div class="pw-error" id="pw-error">Incorrect password.</div></div></div><div id="portal-overlay" style="display:none"><div class="portal-header"><div class="portal-title"><h2>Members Portal</h2></div><button class="portal-close" onclick="closePortal()">Close</button></div><div class="portal-tabs"><div class="portal-tab active" data-tab="stats" onclick="switchTab('stats')">Stats</div><div class="portal-tab" data-tab="members" onclick="switchTab('members')">Members</div><div class="portal-tab" data-tab="referrals" onclick="switchTab('referrals')">Referrals</div><div class="portal-tab" data-tab="tagging" onclick="switchTab('tagging')">Tagging</div><div class="portal-tab" data-tab="schedule" onclick="switchTab('schedule')">Schedule</div></div><div class="portal-content"><div class="ptab active" id="ptab-stats"><div id="portal-stats-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px;margin-bottom:24px"></div><h3 style="color:var(--gold);font-size:0.9rem;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px">Members by Category</h3><div id="portal-cat-list" style="display:flex;flex-direction:column;gap:6px"></div></div><div class="ptab" id="ptab-members"><input id="portal-member-search" type="text" placeholder="Search members..." oninput="filterPortalMembers()" style="width:100%;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;margin-bottom:16px;outline:none"><div id="portal-member-list" style="display:flex;flex-direction:column;gap:8px"></div></div><div class="ptab" id="ptab-referrals"><div style="max-width:560px"><h3 style="color:var(--gold);margin-bottom:18px;font-size:1rem">Log a Referral</h3><div class="form-group"><label>Referred By (Your Name)</label><select id="ref-from" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Referred To</label><select id="ref-to" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Description (optional)</label><textarea id="ref-desc" placeholder="e.g. Referred John for roof repair..." style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;min-height:80px;resize:vertical;outline:none;font-family:inherit"></textarea></div><button onclick="submitReferral()" style="padding:12px 28px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s">Submit Referral</button><div id="ref-msg" style="margin-top:12px;font-size:0.9rem"></div></div><div style="margin-top:36px"><h3 style="color:var(--gold);margin-bottom:14px;font-size:1rem">Referral Log (This Session)</h3><div id="ref-log"><p style="color:var(--muted);font-size:0.88rem">No referrals logged yet this session.</p></div></div><div class="ptab" id="ptab-schedule"><div class="schedule-panel"><h3>Zoom Schedule</h3><div class="schedule-meta"><div><strong>Zoom ID:</strong> 435 686 3146</div><div><strong>Passcode:</strong> 1956</div></div><ul class="schedule-times"><li><strong>Monday:</strong> 7:00 PM</li><li><strong>Wednesday:</strong> 4:00 PM</li><li><strong>Thursday:</strong> 9:00 AM</li><li><strong>Saturday:</strong> 10:00 AM</li></ul><div class="schedule-note"><p><strong>If you're unfamiliar with Zoom:</strong> Go to Zoom.com, click <strong>Meet</strong> at the top, choose <strong>Join a Meeting</strong>, and enter the ID and passcode shown above.</p></div></div></div></div></div></div>
+</footer><div id="pw-overlay" style="display:none"><div class="pw-box"><h2>Members Portal</h2><p>Enter portal password</p><input class="pw-input" id="pw-input" type="password" placeholder="Password"><button class="pw-submit" onclick="checkPassword()">Enter</button><div class="pw-error" id="pw-error">Incorrect password.</div></div></div><div id="portal-overlay" style="display:none"><div class="portal-header"><div class="portal-title"><h2>Members Portal</h2></div><button class="portal-close" onclick="closePortal()">Close</button></div><div class="portal-tabs"><div class="portal-tab active" data-tab="stats" onclick="switchTab('stats')">Stats</div><div class="portal-tab" data-tab="members" onclick="switchTab('members')">Members</div><div class="portal-tab" data-tab="schedule" onclick="switchTab('schedule')">Schedule</div><div class="portal-tab" data-tab="referrals" onclick="switchTab('referrals')">Referrals</div><div class="portal-tab" data-tab="tagging" onclick="switchTab('tagging')">Tagging</div></div><div class="portal-content"><div class="ptab active" id="ptab-stats"><div id="portal-stats-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px;margin-bottom:24px"></div><h3 style="color:var(--gold);font-size:0.9rem;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px">Members by Category</h3><div id="portal-cat-list" style="display:flex;flex-direction:column;gap:6px"></div></div><div class="ptab" id="ptab-members"><input id="portal-member-search" type="text" placeholder="Search members..." oninput="filterPortalMembers()" style="width:100%;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;margin-bottom:16px;outline:none"><div id="portal-member-list" style="display:flex;flex-direction:column;gap:8px"></div></div><div class="ptab" id="ptab-schedule"><div class="schedule-wrap"><h3 style="color:var(--gold);margin-bottom:16px;font-size:1rem">Meeting Schedule</h3><div class="schedule-panel"><div class="schedule-grid"><div class="schedule-item"><div class="schedule-day">Monday</div><div class="schedule-time">7:00 PM</div></div><div class="schedule-item"><div class="schedule-day">Wednesday</div><div class="schedule-time">4:00 PM</div></div><div class="schedule-item"><div class="schedule-day">Thursday</div><div class="schedule-time">9:00 AM</div></div><div class="schedule-item"><div class="schedule-day">Saturday</div><div class="schedule-time">10:00 AM</div></div></div><div class="zoom-box"><h4>Zoom Access</h4><div class="zoom-line"><strong>Zoom ID:</strong> 435 686 3146</div><div class="zoom-line"><strong>Passcode:</strong> 1956</div></div><div class="schedule-note">If you're unfamiliar with Zoom, go to <strong>Zoom.com</strong>, click <strong>Meet</strong> at the top, choose <strong>Join a Meeting</strong>, and enter the Zoom ID and passcode shown above.</div></div></div></div><div class="ptab" id="ptab-referrals"><div style="max-width:560px"><h3 style="color:var(--gold);margin-bottom:18px;font-size:1rem">Log a Referral</h3><div class="form-group"><label>Referred By (Your Name)</label><select id="ref-from" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Referred To</label><select id="ref-to" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Description (optional)</label><textarea id="ref-desc" placeholder="e.g. Referred John for roof repair..." style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;min-height:80px;resize:vertical;outline:none;font-family:inherit"></textarea></div><button onclick="submitReferral()" style="padding:12px 28px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s">Submit Referral</button><div id="ref-msg" style="margin-top:12px;font-size:0.9rem"></div></div><div style="margin-top:36px"><h3 style="color:var(--gold);margin-bottom:14px;font-size:1rem">Referral Log (This Session)</h3><div id="ref-log"><p style="color:var(--muted);font-size:0.88rem">No referrals logged yet this session.</p></div></div></div></div></div>
 </div>
 
 <script>
@@ -603,12 +621,43 @@ function renderDirectory() {
   directoryDiv.innerHTML = html;
 }
 
-function escapeHtml(value=''){return String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
-function downloadVCard(member){var lines=['BEGIN:VCARD','VERSION:3.0','FN:'+(member.displayName||''),'ORG:'+(member.businessName||'')];if(member.phone)lines.push('TEL;TYPE=CELL:'+member.phone);if(member.email)lines.push('EMAIL;TYPE=INTERNET:'+member.email);if(member.website)lines.push('URL:'+normalizeWebsite(member.website));lines.push('END:VCARD');var blob=new Blob([lines.join('\n')],{type:'text/vcard;charset=utf-8'});var a=document.createElement('a');var safeName=(member.displayName||member.businessName||'contact').replace(/[^a-z0-9]+/gi,'_');a.href=URL.createObjectURL(blob);a.download=safeName+'.vcf';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(a.href);},1000);}
 const MEMBER_PHOTOS={'Dan Donahoe':'https://drive.google.com/thumbnail?id=1K_zgjS3a1YpIGYIU2nzLcjiig1bCZa7g&sz=w200','Tracey Von Schmittou':'https://drive.google.com/thumbnail?id=1pJ5rYwxqW02Ru3fzcPHjjJi8CrSqI0EQ&sz=w200'};
 function sanitizePhone(phone=''){return phone.replace(/[^\d+]/g,'');}
 function normalizeWebsite(url=''){return !url ? '' : (url.startsWith('http') ? url : 'https://' + url);}
 // Create member card HTML
+
+function escapeHtml(value=''){
+  return String(value)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+function downloadVCard(member){
+  const lines = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    `FN:${member.displayName || ''}`,
+    `ORG:${member.businessName || ''}`
+  ];
+  if (member.phone) lines.push(`TEL;TYPE=CELL:${member.phone}`);
+  if (member.email) lines.push(`EMAIL;TYPE=INTERNET:${member.email}`);
+  if (member.website) lines.push(`URL:${normalizeWebsite(member.website)}`);
+  lines.push('END:VCARD');
+
+  const blob = new Blob([lines.join('\n')], {type:'text/vcard;charset=utf-8'});
+  const a = document.createElement('a');
+  const safeName = (member.displayName || member.businessName || 'contact').replace(/[^a-z0-9]+/gi,'_');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${safeName}.vcf`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
 function createMemberCard(member) {
   const name = (member.displayName || member.businessName || member.email || '').toString().trim();
   const initials = name ? name.split(/\s+/).map(n => n[0]).join('').substring(0, 2).toUpperCase() : '??';
