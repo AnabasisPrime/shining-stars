@@ -8,22 +8,23 @@
 /* ===== RESET & ROOT ===== */
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --gold:#f3be4d;
-  --gold2:#ffd98a;
-  --accent:#78aee6;
-  --accent2:#4f83c6;
-  --space:#4c6078;
-  --space2:#5f748c;
-  --space3:#73879d;
-  --card:#ecf1f6;
-  --card2:#dde6ef;
-  --border:#98abc0;
-  --text:#172435;
-  --muted:#47586c;
-  --radius:16px;
-  --shadow:0 14px 34px rgba(8,15,26,0.18);
+  --gold:#1d4f91;
+  --gold:#f0b429;
+  --gold2:#2f6db3;
+  --space:#eef3f8;
+  --space2:#f8fbfe;
+  --space3:#dde6f0;
+  --purple:#2f6db3;
+  --purple2:#163e72;
+  --card:#ffffff;
+  --card2:#f8fafc;
+  --border:#d7e0ea;
+  --text:#1e293b;
+  --muted:#64748b;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(15,23,42,0.08);
 }
-body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(180deg,#526780 0%, #667b92 48%, #7b8fa4 100%);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(180deg,var(--space),var(--space3));color:var(--text);min-height:100vh;overflow-x:hidden}
 
 /* ===== STARFIELD ===== */
 #starfield{display:none}
@@ -35,36 +36,35 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(180deg,#
 
 /* ===== HEADER ===== */
 header{
-  background:linear-gradient(180deg,rgba(32,43,58,0.95) 0%, rgba(49,64,82,0.88) 100%);
-  border-bottom:1px solid rgba(255,214,132,0.22);
+  background:linear-gradient(180deg,#f8fbff 0%, #edf3f9 100%);
+  border-bottom:1px solid var(--border);
   padding:0 0 22px;
   text-align:center;
   position:relative;
 }
-.hero-banner{width:100%;height:250px;overflow:hidden;border-bottom:1px solid rgba(255,214,132,0.18);background:linear-gradient(180deg,#213041 0%, #314256 45%, #6b5a58 78%, #d29352 100%)}
+.hero-banner{width:100%;height:220px;overflow:hidden;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#dfeaf5 0%, #eef4f9 100%)}
 .hero-banner svg{width:100%;height:100%;display:block}
 .logo-wrap{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;padding:24px 24px 0}
-.scorpius-svg{width:74px;height:74px;filter:drop-shadow(0 8px 18px rgba(255,191,73,0.26))}
+.scorpius-svg{width:74px;height:74px;filter:drop-shadow(0 6px 12px rgba(29,79,145,0.14))}
 .header-text h1{
-  font-size:clamp(1.45rem,4vw,2.3rem);
+  font-size:clamp(1.4rem,4vw,2.2rem);
   font-weight:900;
-  color:#ffd471;
-  letter-spacing:0.35px;
+  color:var(--gold);
+  letter-spacing:0.4px;
   line-height:1.2;
-  text-shadow:0 4px 20px rgba(0,0,0,0.22);
 }
-.header-text p{color:#e1e8f1;font-size:1rem;margin-top:6px;font-weight:600;letter-spacing:0.1px}
+.header-text p{color:#334155;font-size:0.95rem;margin-top:4px}
 .portal-btn{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:1px solid rgba(29,79,145,0.35);padding:10px 22px;border-radius:30px;font-size:0.88rem;font-weight:700;cursor:pointer;transition:all 0.2s;text-decoration:none;letter-spacing:0.3px}.portal-btn:hover{background:linear-gradient(135deg,#163e72,#275d9a);box-shadow:0 8px 20px rgba(29,79,145,0.18)}
 
 /* ===== TOOLBAR ===== */
 .toolbar-wrap{
-  background:rgba(241,246,251,0.82);
+  background:rgba(255,255,255,0.78);
   border-bottom:1px solid var(--border);
   padding:16px 24px;
   display:flex;gap:12px;flex-wrap:wrap;
   justify-content:center;align-items:center;backdrop-filter:blur(10px);
 }
-.toolbar-wrap input,.toolbar-wrap select{padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;background:#f8fbfe;color:var(--text);font-size:0.95rem;font-weight:600;outline:none;transition:border-color 0.2s, box-shadow 0.2s;}
+.toolbar-wrap input,.toolbar-wrap select{padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-size:0.92rem;outline:none;transition:border-color 0.2s, box-shadow 0.2s;}
 .toolbar-wrap input{min-width:260px;flex:1;max-width:400px}
 .toolbar-wrap select{min-width:200px}
 .toolbar-wrap input::placeholder{color:#7b8797}
@@ -72,21 +72,21 @@ header{
 .toolbar-wrap select option{background:#fff}
 
 /* ===== MAIN DIRECTORY ===== */
-main{max-width:1180px;margin:0 auto;padding:30px 20px 86px}
+main{max-width:1150px;margin:0 auto;padding:28px 20px 80px}
 .status-bar{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-size:0.88rem;color:var(--muted)}
 .badge{background:#e8f0fa;color:var(--gold);border-radius:20px;padding:3px 12px;font-size:0.8rem;font-weight:700;border:1px solid #c8d9ee}
 .cat-section{
-  margin-bottom:30px;
-  padding:19px 19px 21px;
-  background:linear-gradient(180deg, rgba(229,236,244,0.68) 0%, rgba(214,225,236,0.78) 100%);
-  border:1px solid rgba(185,202,220,0.72);
-  border-radius:20px;
-  box-shadow:0 12px 30px rgba(10,18,30,0.08);
+  margin-bottom:28px;
+  padding:18px 18px 20px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(248,251,254,0.92) 100%);
+  border:1px solid #dbe6f0;
+  border-radius:18px;
+  box-shadow:0 8px 24px rgba(15,23,42,0.05);
 }
 .cat-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #d9e4ef}
 .cat-icon{font-size:1.2rem}
-.cat-header h2{font-size:1.14rem;font-weight:800;color:#fff0c2;text-shadow:0 2px 8px rgba(0,0,0,0.12)}
-.cat-count{margin-left:auto;background:rgba(247,214,137,0.16);color:#ffe09d;border-radius:20px;padding:3px 11px;font-size:0.8rem;font-weight:700;border:1px solid rgba(255,221,151,0.38)}
+.cat-header h2{font-size:1.1rem;font-weight:700;color:var(--gold)}
+.cat-count{margin-left:auto;background:#eff5fb;color:var(--gold);border-radius:20px;padding:2px 10px;font-size:0.78rem;font-weight:600;border:1px solid #d3e0ed}
 .card-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
@@ -94,11 +94,11 @@ main{max-width:1180px;margin:0 auto;padding:30px 20px 86px}
   align-items:stretch;
 }
 .member-card{
-  background:linear-gradient(180deg,#edf2f7 0%, #dfe8f1 100%);
+  background:linear-gradient(180deg,#ffffff 0%, #f9fbfd 100%);
   border-radius:18px;
-  box-shadow:0 12px 30px rgba(8,15,26,0.14);
+  box-shadow:0 10px 30px rgba(15,23,42,0.08);
   padding:22px 20px 18px;
-  border:1px solid rgba(142,162,183,0.9);
+  border:1px solid var(--border);
   transition:transform 0.18s, box-shadow 0.18s, border-color 0.18s;
   display:flex;
   flex-direction:column;
@@ -107,8 +107,17 @@ main{max-width:1180px;margin:0 auto;padding:30px 20px 86px}
   gap:12px;
   height:100%;
 }
-.member-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(7,14,24,0.2);border-color:#c9ab61}
-.photo-frame{width:84px;height:84px;border-radius:50%;overflow:hidden;background:linear-gradient(180deg,#f8fbff 0%, #dbe5ef 100%);
+.member-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 38px rgba(15,23,42,0.14);
+  border-color:#9db8d3;
+}
+.photo-frame{
+  width:84px;
+  height:84px;
+  border-radius:50%;
+  overflow:hidden;
+  background:linear-gradient(180deg,#ffffff 0%, #edf4fa 100%);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -118,21 +127,52 @@ main{max-width:1180px;margin:0 auto;padding:30px 20px 86px}
   border:2px solid #d9e6f2;
 }
 .photo-frame img{width:100%;height:100%;object-fit:cover}
-.biz-info{width:100%;min-height:150px;
+.biz-info{
+  width:100%;
+  min-height:142px;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
 }
-.biz-name{font-size:1.08rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:4px;letter-spacing:0.1px}
-.member-name{font-size:0.94rem;color:#31445a;font-weight:800;letter-spacing:0.1px}
-.description{font-size:0.99rem;color:#24374b;margin-top:10px;line-height:1.58;font-weight:600}
-.contact-details{width:100%;margin-top:2px;padding:13px 15px;background:rgba(248,251,254,0.78);border:1px solid rgba(160,180,200,0.72);border-radius:13px;
+.biz-name{
+  font-size:1.02rem;
+  font-weight:800;
+  color:var(--text);
+  line-height:1.25;
+  margin-bottom:3px;
+}
+.member-name{
+  font-size:0.88rem;
+  color:var(--muted);
+  font-weight:700;
+}
+.description{
+  font-size:0.9rem;
+  color:#334155;
+  margin-top:9px;
+  line-height:1.5;
+}
+.contact-details{
+  width:100%;
+  margin-top:2px;
+  padding:12px 14px;
+  background:#f8fbfe;
+  border:1px solid #d8e5f0;
+  border-radius:12px;
   display:flex;
   flex-direction:column;
   gap:10px;
   text-align:left;
 }
-.contact-line{display:flex;align-items:flex-start;gap:11px;font-size:0.93rem;color:#24374b;line-height:1.5;overflow-wrap:anywhere}
+.contact-line{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:0.88rem;
+  color:#334155;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
 .contact-line + .contact-line{
   padding-top:10px;
   border-top:1px solid #e4edf5;
@@ -143,7 +183,11 @@ main{max-width:1180px;margin:0 auto;padding:30px 20px 86px}
   font-weight:700;
   margin-top:1px;
 }
-.contact-value{font-size:1.02rem;font-weight:800;letter-spacing:0.15px}
+.contact-value{
+  font-size:0.96rem;
+  font-weight:700;
+  letter-spacing:0.1px;
+}
 .contact-grid{
   width:100%;
   display:grid;
@@ -151,7 +195,12 @@ main{max-width:1180px;margin:0 auto;padding:30px 20px 86px}
   gap:8px;
   margin-top:2px;
 }
-.contact-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 10px;
+.contact-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:9px 10px;
   border-radius:9px;
   font-size:0.84rem;
   font-weight:700;
@@ -181,23 +230,22 @@ main{max-width:1180px;margin:0 auto;padding:30px 20px 86px}
 .referral-block{
   width:100%;
   margin-top:auto;
-  background:linear-gradient(180deg,rgba(242,236,228,0.96) 0%, rgba(232,225,217,0.98) 100%);
+  background:linear-gradient(180deg,#f6f8fb 0%, #f2f6fb 100%);
   border-radius:12px;
-  padding:13px 13px 15px;
-  font-size:0.96rem;
-  color:#425467;
-  border:1px solid rgba(198,172,128,0.66);
+  padding:11px 12px;
+  font-size:0.85rem;
+  color:#334155;
+  border:1px solid #dbe5ef;
   text-align:left;
-  line-height:1.52;
-  font-weight:600;
+  line-height:1.45;
 }
 .referral-block strong{
-  color:#c6831a;
+  color:var(--gold);
   display:block;
-  margin-bottom:6px;
-  font-size:0.78rem;
+  margin-bottom:4px;
+  font-size:0.72rem;
   text-transform:uppercase;
-  letter-spacing:0.75px
+  letter-spacing:0.6px
 }
 .empty{text-align:center;padding:60px 20px;color:var(--muted)}
 .empty .empty-icon{font-size:2.5rem;margin-bottom:12px}
@@ -206,8 +254,8 @@ main{max-width:1180px;margin:0 auto;padding:30px 20px 86px}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ===== FOOTER ===== */
-footer{background:rgba(232,239,246,0.88);border-top:1px solid rgba(177,193,210,0.8);color:#2f4258;text-align:center;padding:24px 20px;font-size:0.86rem;font-weight:600;}
-footer strong{color:#b77816}
+footer{background:#f8fbfe;border-top:1px solid var(--border);color:var(--muted);text-align:center;padding:22px 20px;font-size:0.82rem;}
+footer strong{color:var(--gold)}
 
 @media (max-width: 700px){
   .hero-banner{height:150px}
@@ -312,130 +360,302 @@ var(--border);border-radius:8px;color:var(--text);font-size:0.92rem;outline:none
 textarea:focus{border-color:var(--purple)}.form-group
 textarea{resize:vertical;min-height:100px}.form-submit{width:100%;padding:12px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all
 0.2s}.form-submit:hover{background:linear-gradient(135deg,var(--purple),#8b5cf6);box-shadow:0 0 20px rgba(108,63,201,0.5)}
+
+/* ===== TWILIGHT V5 OVERRIDES ===== */
+:root{
+  --space:#7387a0;
+  --space2:#cfd8e2;
+  --space3:#5d7189;
+  --card:#d8e0ea;
+  --card2:#cdd7e3;
+  --border:#91a4ba;
+  --text:#162334;
+  --muted:#42566d;
+  --gold:#f6cf72;
+  --gold2:#f0bf55;
+  --purple:#325f9a;
+  --purple2:#223d63;
+  --shadow:0 14px 34px rgba(15,23,42,0.18);
+}
+body{
+  background:linear-gradient(180deg,#8397af 0%, #70849b 35%, #60748d 100%);
+  color:var(--text);
+}
+header{
+  background:linear-gradient(180deg,#33455c 0%, #3c4f67 100%);
+  border-bottom:1px solid rgba(246,207,114,0.32);
+  box-shadow:0 12px 26px rgba(17,24,39,0.18);
+}
+.hero-banner{
+  height:165px;
+  border-bottom:1px solid rgba(246,207,114,0.22);
+}
+.logo-wrap{
+  padding:28px 24px 28px;
+}
+.scorpius-svg{
+  width:86px;
+  height:86px;
+  filter:drop-shadow(0 8px 18px rgba(59,130,246,0.20));
+}
+.header-text h1{
+  color:var(--gold);
+  text-shadow:0 2px 10px rgba(0,0,0,0.18);
+  letter-spacing:0.2px;
+}
+.header-text p{
+  color:#f3f4f6;
+  font-size:0.98rem;
+  font-weight:600;
+}
+.portal-btn{
+  margin-top:16px;
+  background:linear-gradient(135deg,#2f4f7f,#27476f);
+  border:1px solid rgba(246,207,114,0.22);
+  color:#fff7e6;
+  box-shadow:0 8px 18px rgba(16,24,40,0.18);
+}
+.portal-btn:hover{
+  background:linear-gradient(135deg,#395d90,#31517f);
+  box-shadow:0 12px 24px rgba(16,24,40,0.24);
+}
+.toolbar-wrap{
+  background:rgba(224,231,239,0.88);
+  border-bottom:1px solid rgba(255,255,255,0.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.toolbar-wrap input,.toolbar-wrap select{
+  background:#edf2f7;
+  border-color:#96a8bc;
+  color:#223246;
+  font-weight:600;
+}
+.toolbar-wrap input::placeholder{color:#6b7d91}
+main{
+  max-width:1180px;
+}
+.cat-section{
+  background:linear-gradient(180deg,rgba(212,220,230,0.28) 0%, rgba(160,176,194,0.18) 100%);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:18px;
+  padding:18px 18px 16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.cat-header{
+  border-bottom:1px solid rgba(246,207,114,0.28);
+  margin-bottom:16px;
+}
+.cat-header h2{
+  color:#fff2cc;
+  text-shadow:0 1px 4px rgba(0,0,0,0.18);
+}
+.cat-count{
+  background:rgba(246,207,114,0.12);
+  color:#fff1c0;
+  border-color:rgba(246,207,114,0.22);
+}
+.member-card{
+  background:linear-gradient(180deg,#dbe3ec 0%, #ced8e4 100%);
+  border:1px solid #a0b0c4;
+  box-shadow:0 14px 28px rgba(15,23,42,0.14);
+  min-height:100%;
+}
+.member-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 18px 34px rgba(15,23,42,0.20);
+  border-color:#b5c2d1;
+}
+.photo-frame{
+  background:linear-gradient(180deg,#f0f4f8 0%, #dfe7ef 100%);
+  border-color:#b7c6d6;
+  color:#24466d;
+}
+.biz-name{
+  color:#28466b;
+  font-size:1.06rem;
+  font-weight:800;
+}
+.member-name{
+  color:#182230;
+  font-size:0.88rem;
+  font-weight:800;
+}
+.description{
+  color:#4b627b;
+  font-size:0.9rem;
+  font-weight:600;
+  line-height:1.5;
+}
+.contact-details{
+  background:#e8eef5;
+  border-color:#b6c3d2;
+}
+.contact-line{
+  color:#1c2b3b;
+  font-size:0.9rem;
+  font-weight:700;
+}
+.contact-icon{
+  color:#244f88;
+}
+.contact-btn{
+  background:#f7f9fb;
+  border-color:#b9c6d4;
+  color:#214d86;
+  font-weight:800;
+}
+.contact-btn:hover{
+  background:#ecf2f7;
+  border-color:#97aec7;
+}
+.referral-block{
+  background:#d7d0e4;
+  border-color:#b9a9e1;
+}
+.referral-block strong{
+  color:#d89d12;
+}
+.referral-block{
+  color:#5b6f8d;
+  font-size:0.9rem;
+  font-weight:600;
+  line-height:1.45;
+}
+.status-bar{
+  color:#e6edf5;
+}
+.badge{
+  background:rgba(246,207,114,0.12);
+  color:#fff1bf;
+  border-color:rgba(246,207,114,0.2);
+}
+footer{
+  background:#5a6e86;
+  border-top:1px solid rgba(255,255,255,0.10);
+  color:#edf2f7;
+}
+footer strong{color:#ffe29b}
+.empty{
+  color:#eef3f8;
+}
+.empty .empty-icon{
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,0.18));
+}
 </style>
 </head>
 <body>
 <div id="starfield"></div>
 <div id="app">
 <header>
-<div class="hero-banner" aria-hidden="true">
-<svg viewBox="0 0 1600 250" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#1f2d3d"/>
-    <stop offset="28%" stop-color="#2f4660"/>
-    <stop offset="62%" stop-color="#725a63"/>
-    <stop offset="82%" stop-color="#c37a55"/>
-    <stop offset="100%" stop-color="#f0bf72"/>
-  </linearGradient>
-  <linearGradient id="ground" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#2d3948"/>
-    <stop offset="34%" stop-color="#445565"/>
-    <stop offset="63%" stop-color="#6e6c63"/>
-    <stop offset="82%" stop-color="#6e7759"/>
-    <stop offset="100%" stop-color="#576b4f"/>
-  </linearGradient>
-  <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#718191"/>
-    <stop offset="100%" stop-color="#3e4955"/>
-  </linearGradient>
-</defs>
+  <div class="hero-banner" aria-hidden="true">
+    <svg viewBox="0 0 1600 260" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="twSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#20324b"/>
+          <stop offset="38%" stop-color="#5b5066"/>
+          <stop offset="68%" stop-color="#b77663"/>
+          <stop offset="100%" stop-color="#f2bf77"/>
+        </linearGradient>
+        <linearGradient id="twGlow" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#f7d28e" stop-opacity="0"/>
+          <stop offset="45%" stop-color="#f7d28e" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#f7d28e" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="roadGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#8da0b4"/>
+          <stop offset="100%" stop-color="#3f4d61"/>
+        </linearGradient>
+      </defs>
 
-<rect width="1600" height="250" fill="url(#sky)"/>
-<circle cx="1270" cy="78" r="44" fill="#ffd782" opacity="0.72"/>
-<circle cx="1270" cy="78" r="62" fill="#ffcc73" opacity="0.18"/>
+      <rect width="1600" height="260" fill="url(#twSky)"/>
+      <rect y="118" width="1600" height="14" fill="url(#twGlow)" opacity=".9"/>
 
-<!-- distant haze -->
-<path d="M0 116 C210 108, 365 118, 540 110 C725 102, 905 86, 1140 98 C1325 108, 1485 122, 1600 120 L1600 150 L0 150 Z" fill="#f0b16c" opacity="0.12"/>
+      <!-- sun -->
+      <circle cx="1320" cy="52" r="46" fill="#ffd37a" opacity=".95"/>
+      <circle cx="1320" cy="52" r="76" fill="#ffd37a" opacity=".12"/>
 
-<!-- city skyline -->
-<g opacity="0.98">
-  <rect x="40" y="92" width="54" height="70" fill="#20303f"/>
-  <rect x="102" y="72" width="58" height="90" fill="#25384a"/>
-  <rect x="170" y="58" width="72" height="104" fill="#1c2e3d"/>
-  <rect x="252" y="80" width="44" height="82" fill="#2a3f52"/>
-  <rect x="303" y="44" width="86" height="118" fill="#182636"/>
-  <rect x="399" y="68" width="64" height="94" fill="#223547"/>
-  <rect x="470" y="86" width="46" height="76" fill="#30495f"/>
-  <rect x="523" y="52" width="60" height="110" fill="#213547"/>
-  <rect x="590" y="76" width="54" height="86" fill="#2d4357"/>
-  <rect x="650" y="96" width="44" height="66" fill="#3a5269"/>
-</g>
+      <!-- city skyline -->
+      <g opacity=".96">
+        <rect x="0" y="44" width="58" height="88" fill="#18293d"/>
+        <rect x="66" y="28" width="54" height="104" fill="#22364c"/>
+        <rect x="126" y="18" width="90" height="114" fill="#1a2f46"/>
+        <rect x="226" y="40" width="64" height="92" fill="#20364f"/>
+        <rect x="302" y="14" width="84" height="118" fill="#29425b"/>
+        <rect x="396" y="32" width="78" height="100" fill="#23394f"/>
+        <rect x="482" y="52" width="60" height="80" fill="#1d3147"/>
+        <rect x="550" y="22" width="90" height="110" fill="#2d4862"/>
+      </g>
 
-<!-- windows -->
-<g fill="#ffd98a" opacity="0.88">
-  <rect x="55" y="110" width="6" height="8"/><rect x="67" y="110" width="6" height="8"/><rect x="55" y="124" width="6" height="8"/>
-  <rect x="118" y="90" width="6" height="8"/><rect x="130" y="90" width="6" height="8"/><rect x="142" y="104" width="6" height="8"/><rect x="118" y="118" width="6" height="8"/>
-  <rect x="188" y="80" width="7" height="8"/><rect x="202" y="80" width="7" height="8"/><rect x="216" y="94" width="7" height="8"/><rect x="188" y="108" width="7" height="8"/>
-  <rect x="327" y="66" width="7" height="9"/><rect x="341" y="66" width="7" height="9"/><rect x="355" y="66" width="7" height="9"/><rect x="327" y="82" width="7" height="9"/>
-  <rect x="418" y="90" width="6" height="8"/><rect x="430" y="104" width="6" height="8"/><rect x="442" y="118" width="6" height="8"/>
-  <rect x="541" y="74" width="6" height="8"/><rect x="553" y="88" width="6" height="8"/><rect x="565" y="102" width="6" height="8"/>
-</g>
+      <!-- lit windows -->
+      <g fill="#ffd98a" opacity=".9">
+        <rect x="18" y="72" width="10" height="14"/><rect x="18" y="96" width="10" height="14"/>
+        <rect x="82" y="50" width="10" height="14"/><rect x="82" y="76" width="10" height="14"/>
+        <rect x="150" y="44" width="12" height="16"/><rect x="178" y="70" width="12" height="16"/>
+        <rect x="326" y="44" width="12" height="16"/><rect x="352" y="72" width="12" height="16"/>
+        <rect x="424" y="58" width="10" height="14"/><rect x="446" y="84" width="10" height="14"/>
+      </g>
 
-<!-- suburban homes -->
-<g>
-  <polygon points="760,154 800,126 840,154 840,178 760,178" fill="#8f715b"/>
-  <polygon points="766,154 800,130 834,154" fill="#654938"/>
-  <rect x="792" y="160" width="13" height="18" fill="#e8d7c1"/>
-  <rect x="775" y="159" width="11" height="9" fill="#ffdf98"/>
-  <rect x="814" y="159" width="11" height="9" fill="#ffdf98"/>
+      <!-- suburbs -->
+      <g>
+        <polygon points="720,118 770,80 820,118 820,146 720,146" fill="#8c6a52"/>
+        <polygon points="728,118 770,86 812,118" fill="#70503b"/>
+        <rect x="760" y="108" width="18" height="38" fill="#e6dccf"/>
+        <rect x="740" y="102" width="16" height="14" fill="#ffe08f"/>
+        <rect x="784" y="102" width="16" height="14" fill="#ffe08f"/>
 
-  <polygon points="860,157 902,128 944,157 944,182 860,182" fill="#a48163"/>
-  <polygon points="866,157 902,132 938,157" fill="#6b4d38"/>
-  <rect x="895" y="165" width="13" height="17" fill="#e8d7c1"/>
-  <rect x="878" y="162" width="11" height="9" fill="#ffdf98"/>
-  <rect x="916" y="162" width="11" height="9" fill="#ffdf98"/>
+        <polygon points="845,120 895,84 945,120 945,148 845,148" fill="#977055"/>
+        <polygon points="853,120 895,90 937,120" fill="#75553d"/>
+        <rect x="884" y="110" width="18" height="38" fill="#ece0d0"/>
+        <rect x="866" y="104" width="16" height="14" fill="#ffe08f"/>
+        <rect x="911" y="104" width="16" height="14" fill="#ffe08f"/>
 
-  <polygon points="965,162 1001,138 1037,162 1037,184 965,184" fill="#95755d"/>
-  <polygon points="971,162 1001,141 1031,162" fill="#694c38"/>
-  <rect x="995" y="169" width="12" height="15" fill="#e8d7c1"/>
-  <rect x="980" y="166" width="10" height="8" fill="#ffdf98"/>
-  <rect x="1012" y="166" width="10" height="8" fill="#ffdf98"/>
-</g>
+        <polygon points="975,124 1015,96 1055,124 1055,146 975,146" fill="#8f6b51"/>
+        <polygon points="982,124 1015,101 1048,124" fill="#6e513c"/>
+        <rect x="1007" y="116" width="14" height="30" fill="#ece0d0"/>
+        <rect x="991" y="110" width="13" height="12" fill="#ffe08f"/>
+        <rect x="1025" y="110" width="13" height="12" fill="#ffe08f"/>
+      </g>
 
-<!-- country -->
-<g>
-  <rect x="1118" y="134" width="18" height="42" fill="#6d4e3a"/>
-  <circle cx="1127" cy="124" r="26" fill="#50664d"/>
-  <circle cx="1118" cy="125" r="18" fill="#5e7857"/>
-  <circle cx="1140" cy="127" r="18" fill="#4f694d"/>
+      <!-- trees and rural edge -->
+      <g>
+        <rect x="1110" y="76" width="10" height="56" fill="#5f4b3a"/>
+        <circle cx="1115" cy="62" r="30" fill="#58734f"/>
+        <rect x="1225" y="76" width="10" height="56" fill="#5f4b3a"/>
+        <circle cx="1230" cy="60" r="34" fill="#648258"/>
+        <rect x="1348" y="76" width="10" height="56" fill="#5f4b3a"/>
+        <circle cx="1353" cy="62" r="30" fill="#56724e"/>
+        <polygon points="1465,118 1510,88 1555,118 1555,146 1465,146" fill="#7f624b"/>
+        <polygon points="1472,118 1510,93 1548,118" fill="#644936"/>
+      </g>
 
-  <rect x="1210" y="138" width="16" height="38" fill="#72533b"/>
-  <circle cx="1218" cy="126" r="24" fill="#58714f"/>
+      <!-- terrain -->
+      <path d="M0 132 C260 132, 420 124, 620 128 C860 132, 1110 140, 1600 120 L1600 260 L0 260 Z" fill="#74806a"/>
+      <path d="M0 146 C300 144, 540 136, 770 140 C1080 146, 1320 132, 1600 128 L1600 260 L0 260 Z" fill="#5e6b68"/>
 
-  <rect x="1314" y="140" width="16" height="36" fill="#72533b"/>
-  <circle cx="1322" cy="128" r="22" fill="#54704f"/>
+      <!-- road -->
+      <path d="M820 260 C900 188, 1040 154, 1180 150 C1320 146, 1450 178, 1520 260 Z" fill="url(#roadGrad)" opacity=".95"/>
+      <path d="M1138 178 L1163 260" stroke="#e8c67f" stroke-width="5" stroke-linecap="round" opacity=".9"/>
 
-  <polygon points="1382,162 1418,140 1454,162 1454,182 1382,182" fill="#8f755f"/>
-  <polygon points="1388,162 1418,144 1448,162" fill="#684c38"/>
-  <rect x="1412" y="169" width="10" height="13" fill="#e7d7bf"/>
-  <rect x="1398" y="166" width="9" height="7" fill="#ffdf98"/>
-  <rect x="1429" y="166" width="9" height="7" fill="#ffdf98"/>
-</g>
+      <!-- lights -->
+      <g fill="#ffd77d" opacity=".95">
+        <circle cx="1090" cy="104" r="5"/><circle cx="1188" cy="108" r="4.5"/><circle cx="1286" cy="113" r="4.5"/>
+        <circle cx="1350" cy="106" r="4.5"/><circle cx="1450" cy="112" r="4.5"/>
+      </g>
+    </svg>
+  </div>
 
-<!-- rolling land -->
-<path d="M0 172 C160 168, 290 164, 430 168 C600 174, 760 182, 934 176 C1120 170, 1320 158, 1600 166 L1600 250 L0 250 Z" fill="url(#ground)"/>
-<path d="M0 184 C250 176, 430 188, 628 196 C850 205, 1100 194, 1328 182 C1450 176, 1548 180, 1600 186 L1600 250 L0 250 Z" fill="#445664" opacity="0.62"/>
+  <div class="logo-wrap">
+    <svg class="scorpius-svg" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <path d="M50 10L55 25L70 20L60 35L75 40L60 45L70 60L55 55L50 70L45 55L30 60L40 45L25 40L40 35L30 20L45 25L50 10Z" fill="#3b82f6"/>
+      <circle cx="50" cy="50" r="3" fill="#3b82f6"/>
+    </svg>
 
-<!-- road -->
-<path d="M860 250 C902 217, 960 197, 1038 190 C1148 181, 1264 190, 1388 250 Z" fill="url(#road)" opacity="0.95"/>
-<path d="M1121 210 L1136 250" stroke="#f7dc9d" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
-
-<!-- lights -->
-<g fill="#ffd98a" opacity="0.9">
-  <circle cx="1083" cy="170" r="3.3"/><circle cx="1111" cy="166" r="3.1"/><circle cx="1160" cy="172" r="3.2"/>
-  <circle cx="1239" cy="175" r="3.1"/><circle cx="1290" cy="171" r="3.2"/><circle cx="1362" cy="176" r="3.1"/>
-</g>
-</svg>
-</div>
-<div class="logo-wrap">
-<svg class="scorpius-svg" viewBox="0 0 100 100" fill="none"><path d="M50 10L55 25L70 20L60 35L75 40L60 45L70 60L55 55L50 70L45 55L30 60L40 45L25 40L40 35L30 20L45 25L50 10Z" fill="#2f6db3"/><circle cx="50" cy="50" r="3" fill="#2f6db3"/></svg>
-<div class="header-text">
-<h1>SWFL Strategic Referral Alliance</h1>
-<p>Local business owners supporting local families — Fort Myers, FL</p>
-</div>
-</div>
-<button class="portal-btn" id="portal-btn" onclick="openPortal()">⚙️ Members Portal</button>
+    <div class="header-text">
+      <h1>SWFL Strategic Referral Alliance</h1>
+      <p>Local business owners supporting local families — Fort Myers, FL</p>
+      <button class="portal-btn" id="portal-btn" onclick="openPortal()">⚙️ Members Portal</button>
+    </div>
+  </div>
 </header>
 <div class="toolbar-wrap">
 <input type="text" id="q" placeholder="Search members, businesses...">
