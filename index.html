@@ -10,9 +10,9 @@
 :root{
   --gold:#f0b429;
   --gold2:#ffd166;
-  --space:#07090f;
-  --space2:#0d1117;
-  --space3:#111827;
+  --space:#2c2c2c;
+  --space2:#1a1a1a;
+  --space3:#242424;
   --purple:#6c3fc9;
   --purple2:#3d1f7a;
   --card:#12182a;
@@ -23,12 +23,8 @@
   --radius:14px;
   --shadow:0 4px 24px rgba(0,0,0,0.5);
 }
-body{font-family:'Segoe UI',Arial,sans-serif;background:var(--space);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(to right,#3a2f20 0%,#2c2c2c 40%,#2c2c2c 60%,#1f2430 100%)(--space);color:var(--text);min-height:100vh;overflow-x:hidden}
 
-/* ===== STARFIELD ===== */
-#starfield{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
-.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle var(--dur,3s) ease-in-out infinite var(--delay,0s)}
-@keyframes twinkle{0%,100%{opacity:var(--min-op,0.2);transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
 /* ===== LAYOUT ===== */
 #app{position:relative;z-index:1}
