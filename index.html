@@ -123,13 +123,6 @@ main{max-width:1150px;margin:0 auto;padding:28px 20px 80px}
 }
 .contact-btn:hover{background:rgba(240,180,41,0.12);border-color:var(--gold);color:var(--gold)}
 .contact-btn.wide{grid-column:span 2}
-  /\* Contact Info Display \*/
-  .contact-info{display:flex;flex-direction:column;gap:8px;margin-top:10px;width:100%}
-  .contact-item{display:flex;align-items:center;gap:6px;font-size:0.85rem;color:var(--text)}
-  .contact-label{font-size:1.1rem;flex-shrink:0}
-  .contact-text{flex:1;color:var(--muted);word-break:break-all;font-size:0.8rem}
-  .contact-action{padding:4px 10px;background:rgba(240,180,41,0.1);color:var(--gold);border:1px solid rgba(240,180,41,0.3);border-radius:12px;font-size:0.75rem;font-weight:600;text-decoration:none;transition:all 0.2s;white-space:nowrap}
-  .contact-action:hover{background:rgba(240,180,41,0.2);border-color:var(--gold);transform:translateY(-1px)}
 .referral-block{
   width:100%;margin-top:8px;
   background:rgba(108,63,201,0.1);border-radius:8px;
@@ -427,29 +420,10 @@ const initials = name
         <div class="description">${member.shortDescription}</div>
       </div>
       <div class="contact-grid">
-              <div class="contact-info">
-                        ${member.phone ? `
-                                    <div class="contact-item">
-                                                  <span class="contact-label">📞</span>
-                                                                <span class="contact-text">${member.phone}</span>
-                                                                              <a href="tel:${member.phone}" class="contact-action">Call</a>
-                                                                                          </div>
-                                                                                                    ` : ''}
-                                                                                                              ${member.email ? `
-                                                                                                                          <div class="contact-item">
-                                                                                                                                        <span class="contact-label">✉️</span>
-                                                                                                                                                      <span class="contact-text">${member.email}</span>
-                                                                                                                                                                    <a href="mailto:${member.email}" class="contact-action">Email</a>
-                                                                                                                                                                                </div>
-                                                                                                                                                                                          ` : ''}
-                                                                                                                                                                                                    ${member.website ? `
-                                                                                                                                                                                                                <div class="contact-item">
-                                                                                                                                                                                                                              <span class="contact-label">🌐</span>
-                                                                                                                                                                                                                                            <span class="contact-text">${member.website.replace(/^https?:\/\//, '')}</span>
-                                                                                                                                                                                                                                                          <a href="${member.website.startsWith('http') ? member.website : 'https://' + member.website}" target="_blank" class="contact-action">Visit</a>
-                                                                                                                                                                                                                                                                      </div>
-                                                                                                                                                                                                                                                                                ` : ''}
-                                                                                                                                                                                                                                                                                        </div>
+        ${member.phone ? `<a href="tel:${member.phone}" class="contact-btn">📞 Call</a>` : ''}
+        ${member.email ? `<a href="mailto:${member.email}" class="contact-btn">✉️ Email</a>` : ''}
+        ${member.website ? `<a href="${member.website.startsWith('http') ? member.website : 'https://' + member.website}" target="_blank" class="contact-btn ${(!member.phone && !member.email) ? 'wide' : ''}">🌐 Website</a>` : ''}
+      </div>
       ${member.idealReferrals ? `
         <div class="referral-block">
           <strong>Ideal Referrals</strong>
