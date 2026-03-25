@@ -76,6 +76,87 @@ header{
 }
 .portal-btn:hover{background:linear-gradient(135deg,#274061,#355986);box-shadow:0 8px 24px rgba(18,34,52,0.22)}
 
+
+/* ===== ABOUT BAND ===== */
+.about-band{
+  max-width:1180px;
+  margin:22px auto 18px;
+  padding:0 20px;
+}
+.about-panel{
+  background:linear-gradient(180deg, rgba(233,239,245,0.96) 0%, rgba(220,229,238,0.94) 100%);
+  border:1px solid rgba(160,177,196,0.88);
+  border-radius:18px;
+  box-shadow:0 14px 30px rgba(15,23,42,0.12);
+  overflow:hidden;
+}
+.about-inner{
+  padding:24px 22px 22px;
+}
+.about-kicker{
+  color:#8a6520;
+  font-size:0.8rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  margin-bottom:8px;
+}
+.about-inner h2{
+  color:#1f3146;
+  font-size:1.5rem;
+  line-height:1.2;
+  margin-bottom:10px;
+  font-weight:900;
+}
+.about-inner p{
+  color:#31455d;
+  font-size:1rem;
+  line-height:1.65;
+  font-weight:600;
+  max-width:980px;
+}
+.cred-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin-top:18px;
+}
+.cred-card{
+  background:rgba(255,255,255,0.48);
+  border:1px solid rgba(164,180,198,0.78);
+  border-radius:14px;
+  padding:14px 14px 13px;
+  min-height:106px;
+}
+.cred-icon{
+  width:38px;height:38px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg, rgba(247,207,103,0.22), rgba(247,207,103,0.08));
+  border:1px solid rgba(210,171,71,0.35);
+  color:#8a6520;
+  font-size:1rem;
+  margin-bottom:10px;
+}
+.cred-card h3{
+  color:#22354b;
+  font-size:0.98rem;
+  line-height:1.25;
+  margin-bottom:6px;
+  font-weight:800;
+}
+.cred-card p{
+  color:#465c75;
+  font-size:0.9rem;
+  line-height:1.5;
+  font-weight:600;
+}
+@media (max-width: 860px){
+  .cred-grid{grid-template-columns:1fr}
+  .about-inner{padding:20px 18px 18px}
+  .about-inner h2{font-size:1.32rem}
+  .about-inner p{font-size:0.96rem}
+}
+
 /* ===== TOOLBAR ===== */
 .toolbar-wrap{
   background:rgba(231,237,244,0.92);
@@ -317,6 +398,41 @@ footer strong{color:var(--gold)}
 
 <button class="portal-btn" id="portal-btn" onclick="openPortal()">⚙️ Members Portal</button>
 </header>
+
+<div class="about-band">
+  <section class="about-panel" aria-label="About the Alliance">
+    <div class="about-inner">
+      <div class="about-kicker">About the Alliance</div>
+      <h2>Professional standards, local relationships, and practical referral value.</h2>
+      <p>
+        The <strong>SWFL Strategic Referral Alliance</strong> is a relationship-driven network of local business owners who believe
+        that trust still matters, service still matters, and strong referrals are earned through consistency. Our members represent
+        established businesses across Southwest Florida and work together to help local families, homeowners, and professionals find
+        reliable services through warm introductions rather than guesswork. The result is a network that is both professional in
+        standards and community-focused in spirit.
+      </p>
+
+      <div class="cred-grid">
+        <div class="cred-card">
+          <div class="cred-icon">🤝</div>
+          <h3>Relationship-Driven Referrals</h3>
+          <p>We emphasize real introductions, accountability, and long-term trust rather than random lead passing.</p>
+        </div>
+        <div class="cred-card">
+          <div class="cred-icon">🏢</div>
+          <h3>Established Local Professionals</h3>
+          <p>Our directory highlights business owners serving Southwest Florida with practical, client-facing expertise.</p>
+        </div>
+        <div class="cred-card">
+          <div class="cred-icon">🌴</div>
+          <h3>Community-Focused Growth</h3>
+          <p>We support business growth in a way that also strengthens the local community, households, and neighborhoods we serve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <div class="toolbar-wrap">
 <input type="text" id="q" placeholder="Search members, businesses...">
 <select id="cat"><option value="">All Categories</option></select>
@@ -329,7 +445,32 @@ footer strong{color:var(--gold)}
 </main>
 <footer>
 <p><strong>SWFL Strategic Referral Alliance</strong> — Fort Myers, Florida<br/>Connecting local businesses with local families.</p>
-</footer><div id="pw-overlay" style="display:none"><div class="pw-box"><h2>Members Portal</h2><p>Enter portal password</p><input class="pw-input" id="pw-input" type="password" placeholder="Password"><button class="pw-submit" onclick="checkPassword()">Enter</button><div class="pw-error" id="pw-error">Incorrect password.</div></div></div><div id="portal-overlay" style="display:none"><div class="portal-header"><div class="portal-title"><h2>Members Portal</h2></div><button class="portal-close" onclick="closePortal()">Close</button></div><div class="portal-tabs"><div class="portal-tab active" data-tab="stats" onclick="switchTab('stats')">Stats</div><div class="portal-tab" data-tab="members" onclick="switchTab('members')">Members</div><div class="portal-tab" data-tab="referrals" onclick="switchTab('referrals')">Referrals</div><div class="portal-tab" data-tab="tagging" onclick="switchTab('tagging')">Tagging</div></div><div class="portal-content"><div class="ptab active" id="ptab-stats"><div id="portal-stats-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px;margin-bottom:24px"></div><h3 style="color:var(--gold);font-size:0.9rem;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px">Members by Category</h3><div id="portal-cat-list" style="display:flex;flex-direction:column;gap:6px"></div></div><div class="ptab" id="ptab-members"><input id="portal-member-search" type="text" placeholder="Search members..." oninput="filterPortalMembers()" style="width:100%;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;margin-bottom:16px;outline:none"><div id="portal-member-list" style="display:flex;flex-direction:column;gap:8px"></div></div><div class="ptab" id="ptab-referrals"><div style="max-width:560px"><h3 style="color:var(--gold);margin-bottom:18px;font-size:1rem">Log a Referral</h3><div class="form-group"><label>Referred By (Your Name)</label><select id="ref-from" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Referred To</label><select id="ref-to" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Description (optional)</label><textarea id="ref-desc" placeholder="e.g. Referred John for roof repair..." style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;min-height:80px;resize:vertical;outline:none;font-family:inherit"></textarea></div><button onclick="submitReferral()" style="padding:12px 28px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s">Submit Referral</button><div id="ref-msg" style="margin-top:12px;font-size:0.9rem"></div></div><div style="margin-top:36px"><h3 style="color:var(--gold);margin-bottom:14px;font-size:1rem">Referral Log (This Session)</h3><div id="ref-log"><p style="color:var(--muted);font-size:0.88rem">No referrals logged yet this session.</p></div></div></div></div></div>
+</footer><div id="pw-overlay" style="display:none"><div class="pw-box"><h2>Members Portal</h2><p>Enter portal password</p><input class="pw-input" id="pw-input" type="password" placeholder="Password"><button class="pw-submit" onclick="checkPassword()">Enter</button><div class="pw-error" id="pw-error">Incorrect password.</div></div></div><div id="portal-overlay" style="display:none"><div class="portal-header"><div class="portal-title"><h2>Members Portal</h2></div><button class="portal-close" onclick="closePortal()">Close</button></div><div class="portal-tabs"><div class="portal-tab active" data-tab="stats" onclick="switchTab('stats')">Stats</div><div class="portal-tab" data-tab="members" onclick="switchTab('members')">Members</div><div class="portal-tab" data-tab="referrals" onclick="switchTab('referrals')">Referrals</div><div class="portal-tab" data-tab="tagging" onclick="switchTab('tagging')">Tagging</div></div><div class="portal-content"><div class="ptab active" id="ptab-stats"><div id="portal-stats-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px;margin-bottom:24px"></div>
+<div style="margin:0 0 20px;background:linear-gradient(180deg, rgba(70,92,117,0.24), rgba(49,68,93,0.28));border:1px solid rgba(133,154,177,0.32);border-radius:14px;padding:16px 16px 14px">
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+    <div style="color:var(--gold);font-size:0.9rem;font-weight:800;text-transform:uppercase;letter-spacing:0.55px">Alliance Zoom Schedule</div>
+    <div style="padding:4px 10px;border-radius:999px;background:rgba(247,207,103,0.12);border:1px solid rgba(247,207,103,0.22);color:#f7e2a6;font-size:0.78rem;font-weight:800">Members Portal Only</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px">
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(167,184,202,0.2);border-radius:12px;padding:10px 12px"><div style="font-size:0.78rem;color:#b8c9dc;font-weight:700;text-transform:uppercase;letter-spacing:0.4px">Monday</div><div style="font-size:1rem;color:#fff;font-weight:800;margin-top:4px">7:00 PM</div></div>
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(167,184,202,0.2);border-radius:12px;padding:10px 12px"><div style="font-size:0.78rem;color:#b8c9dc;font-weight:700;text-transform:uppercase;letter-spacing:0.4px">Wednesday</div><div style="font-size:1rem;color:#fff;font-weight:800;margin-top:4px">4:00 PM</div></div>
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(167,184,202,0.2);border-radius:12px;padding:10px 12px"><div style="font-size:0.78rem;color:#b8c9dc;font-weight:700;text-transform:uppercase;letter-spacing:0.4px">Thursday</div><div style="font-size:1rem;color:#fff;font-weight:800;margin-top:4px">9:00 AM</div></div>
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(167,184,202,0.2);border-radius:12px;padding:10px 12px"><div style="font-size:0.78rem;color:#b8c9dc;font-weight:700;text-transform:uppercase;letter-spacing:0.4px">Saturday</div><div style="font-size:1rem;color:#fff;font-weight:800;margin-top:4px">10:00 AM</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:12px">
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(167,184,202,0.18);border-radius:12px;padding:12px 13px">
+      <div style="font-size:0.78rem;color:#b8c9dc;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:5px">Join Details</div>
+      <div style="color:#fff;font-size:0.96rem;line-height:1.6;font-weight:700">Zoom ID: 435 686 3146<br>Passcode: 1956</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(167,184,202,0.18);border-radius:12px;padding:12px 13px">
+      <div style="font-size:0.78rem;color:#b8c9dc;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:5px">If You Are New to Zoom</div>
+      <div style="color:#dfe8f3;font-size:0.92rem;line-height:1.55;font-weight:600">
+        Go to Zoom.com, click <strong>Meet</strong> at the top, choose <strong>Join a Meeting</strong>, then enter the meeting ID and passcode shown here.
+      </div>
+    </div>
+  </div>
+</div>
+<h3 style="color:var(--gold);font-size:0.9rem;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px">Members by Category</h3><div id="portal-cat-list" style="display:flex;flex-direction:column;gap:6px"></div></div><div class="ptab" id="ptab-members"><input id="portal-member-search" type="text" placeholder="Search members..." oninput="filterPortalMembers()" style="width:100%;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;margin-bottom:16px;outline:none"><div id="portal-member-list" style="display:flex;flex-direction:column;gap:8px"></div></div><div class="ptab" id="ptab-referrals"><div style="max-width:560px"><h3 style="color:var(--gold);margin-bottom:18px;font-size:1rem">Log a Referral</h3><div class="form-group"><label>Referred By (Your Name)</label><select id="ref-from" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Referred To</label><select id="ref-to" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Description (optional)</label><textarea id="ref-desc" placeholder="e.g. Referred John for roof repair..." style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;min-height:80px;resize:vertical;outline:none;font-family:inherit"></textarea></div><button onclick="submitReferral()" style="padding:12px 28px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s">Submit Referral</button><div id="ref-msg" style="margin-top:12px;font-size:0.9rem"></div></div><div style="margin-top:36px"><h3 style="color:var(--gold);margin-bottom:14px;font-size:1rem">Referral Log (This Session)</h3><div id="ref-log"><p style="color:var(--muted);font-size:0.88rem">No referrals logged yet this session.</p></div></div></div></div></div>
 </div>
 
 <script>
