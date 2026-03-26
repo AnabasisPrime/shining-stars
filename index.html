@@ -362,15 +362,22 @@ footer strong{color:var(--gold)}
 
 /* ===== PORTAL OVERLAYS ===== */
 #pw-overlay,#portal-overlay{
-  position:fixed; inset:0; z-index:9999;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+}
+#pw-overlay{
+  display:none;
+  align-items:center;
+  justify-content:center;
   background:rgba(18,28,42,0.72);
-  display:none; align-items:center; justify-content:center;
   padding:24px;
 }
 #portal-overlay{
-  align-items:stretch;
-  justify-content:center;
+  display:none;
   overflow:auto;
+  background:rgba(15,23,42,0.82);
+  padding:24px;
 }
 .pw-box{
   width:min(420px,92vw);
@@ -384,46 +391,86 @@ footer strong{color:var(--gold)}
 .pw-box h2{color:var(--ink);margin-bottom:8px}
 .pw-box p{color:var(--muted);margin-bottom:14px}
 .pw-input{
-  width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;
-  background:#fff;color:var(--ink);font-size:1rem;outline:none;margin-bottom:12px;
+  width:100%;
+  padding:12px 14px;
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  background:#fff;
+  color:var(--ink);
+  font-size:1rem;
+  outline:none;
+  margin-bottom:12px;
 }
 .pw-submit{
-  width:100%;padding:12px 16px;border:none;border-radius:10px;cursor:pointer;
-  background:linear-gradient(135deg,#2f4c75,#3f6696);color:#fff;font-weight:800;font-size:1rem;
+  width:100%;
+  padding:12px 16px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#2f4c75,#3f6696);
+  color:#fff;
+  font-weight:800;
+  font-size:1rem;
 }
 .pw-error{display:none;color:#b42318;font-weight:700;margin-top:10px}
-#portal-overlay{
-  background:rgba(15,23,42,0.82);
-}
-#portal-overlay .portal-shell{
+
+.portal-header,
+.portal-tabs,
+.portal-content{
   width:min(1180px,96vw);
-  margin:auto;
+  margin-left:auto;
+  margin-right:auto;
 }
 .portal-header{
-  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
   background:linear-gradient(180deg,#31445d 0%, #384d69 100%);
-  color:#fff;padding:18px 22px;border-radius:18px 18px 0 0;
-  border:1px solid rgba(247,207,103,0.22); border-bottom:none;
-  position:sticky; top:0; z-index:2;
+  color:#fff;
+  padding:18px 22px;
+  border-radius:18px 18px 0 0;
+  border:1px solid rgba(247,207,103,0.22);
+  border-bottom:none;
+  margin-top:8px;
 }
 .portal-title h2{margin:0;color:var(--gold)}
 .portal-close{
-  border:1px solid rgba(255,255,255,0.18); background:rgba(255,255,255,0.08); color:#fff;
-  border-radius:10px; padding:10px 14px; font-weight:700; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.08);
+  color:#fff;
+  border-radius:10px;
+  padding:10px 14px;
+  font-weight:700;
+  cursor:pointer;
 }
 .portal-tabs{
-  display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;
-  background:#d9e2ec;border-left:1px solid var(--border);border-right:1px solid var(--border);
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:14px 18px;
+  background:#d9e2ec;
+  border-left:1px solid var(--border);
+  border-right:1px solid var(--border);
 }
 .portal-tab{
-  padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:800;
-  color:var(--ink2);background:#eef3f8;border:1px solid var(--border);
+  padding:10px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:800;
+  color:var(--ink2);
+  background:#eef3f8;
+  border:1px solid var(--border);
 }
 .portal-tab.active{background:#fff3d5;color:#8b5c00;border-color:#e0c176}
 .portal-content{
   background:linear-gradient(180deg,#eef3f8 0%, #dce4ee 100%);
-  color:var(--ink);padding:20px;border:1px solid var(--border);border-top:none;
-  border-radius:0 0 18px 18px; box-shadow:0 20px 50px rgba(15,23,42,0.22);
+  color:var(--ink);
+  padding:20px;
+  border:1px solid var(--border);
+  border-top:none;
+  border-radius:0 0 18px 18px;
+  box-shadow:0 20px 50px rgba(15,23,42,0.22);
 }
 .ptab{display:none}
 .ptab.active{display:block}
@@ -560,7 +607,7 @@ footer strong{color:var(--gold)}
 </main>
 <footer>
 <p><strong>SWFL Strategic Referral Alliance</strong> — Fort Myers, Florida<br/>Connecting local businesses with local families.</p>
-</footer><div id="pw-overlay" style="display:none"><div class="pw-box"><h2>Members Portal</h2><p>Enter portal password</p><input class="pw-input" id="pw-input" type="password" placeholder="Password"><button class="pw-submit" onclick="checkPassword()">Enter</button><div class="pw-error" id="pw-error">Incorrect password.</div></div></div><div id="portal-overlay" style="display:none"><div class="portal-shell"><div class="portal-header"><div class="portal-title"><h2>Members Portal</h2></div><button class="portal-close" onclick="closePortal()">Close</button></div><div class="portal-tabs"><div class="portal-tab active" data-tab="stats" onclick="switchTab('stats')">Stats</div><div class="portal-tab" data-tab="members" onclick="switchTab('members')">Members</div><div class="portal-tab" data-tab="schedule" onclick="switchTab('schedule')">Schedule</div><div class="portal-tab" data-tab="referrals" onclick="switchTab('referrals')">Referrals</div><div class="portal-tab" data-tab="tagging" onclick="switchTab('tagging')">Tagging</div></div><div class="portal-content"><div class="ptab active" id="ptab-stats"><div id="portal-stats-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px;margin-bottom:24px"></div><h3 style="color:var(--gold);font-size:0.9rem;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px">Members by Category</h3><div id="portal-cat-list" style="display:flex;flex-direction:column;gap:6px"></div></div><div class="ptab" id="ptab-members"><input id="portal-member-search" type="text" placeholder="Search members..." oninput="filterPortalMembers()" style="width:100%;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;margin-bottom:16px;outline:none"><div id="portal-member-list" style="display:flex;flex-direction:column;gap:8px"></div></div><div class="ptab" id="ptab-schedule"><div class="schedule-wrap"><h3 style="color:var(--gold);margin-bottom:16px;font-size:1rem">Meeting Schedule</h3><div class="schedule-panel"><div class="schedule-grid"><div class="schedule-item"><div class="schedule-day">Monday</div><div class="schedule-time">7:00 PM</div></div><div class="schedule-item"><div class="schedule-day">Wednesday</div><div class="schedule-time">4:00 PM</div></div><div class="schedule-item"><div class="schedule-day">Thursday</div><div class="schedule-time">9:00 AM</div></div><div class="schedule-item"><div class="schedule-day">Saturday</div><div class="schedule-time">10:00 AM</div></div></div><div class="zoom-box"><h4>Zoom Access</h4><div class="zoom-line"><strong>Zoom ID:</strong> 435 686 3146</div><div class="zoom-line"><strong>Passcode:</strong> 1956</div></div><div class="schedule-note">If you're unfamiliar with Zoom, go to <strong>Zoom.com</strong>, click <strong>Meet</strong> at the top, choose <strong>Join a Meeting</strong>, and enter the Zoom ID and passcode shown above.</div></div></div></div><div class="ptab" id="ptab-referrals"><div style="max-width:560px"><h3 style="color:var(--gold);margin-bottom:18px;font-size:1rem">Log a Referral</h3><div class="form-group"><label>Referred By (Your Name)</label><select id="ref-from" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Referred To</label><select id="ref-to" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Description (optional)</label><textarea id="ref-desc" placeholder="e.g. Referred John for roof repair..." style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;min-height:80px;resize:vertical;outline:none;font-family:inherit"></textarea></div><button onclick="submitReferral()" style="padding:12px 28px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s">Submit Referral</button><div id="ref-msg" style="margin-top:12px;font-size:0.9rem"></div></div><div style="margin-top:36px"><h3 style="color:var(--gold);margin-bottom:14px;font-size:1rem">Referral Log (This Session)</h3><div id="ref-log"><p style="color:var(--muted);font-size:0.88rem">No referrals logged yet this session.</p></div></div></div></div></div>
+</footer><div id="pw-overlay" style="display:none"><div class="pw-box"><h2>Members Portal</h2><p>Enter portal password</p><input class="pw-input" id="pw-input" type="password" placeholder="Password"><button class="pw-submit" onclick="checkPassword()">Enter</button><div class="pw-error" id="pw-error">Incorrect password.</div></div></div><div id="portal-overlay" style="display:none"><div class="portal-header"><div class="portal-title"><h2>Members Portal</h2></div><button class="portal-close" onclick="closePortal()">Close</button></div><div class="portal-tabs"><div class="portal-tab active" data-tab="stats" onclick="switchTab('stats')">Stats</div><div class="portal-tab" data-tab="members" onclick="switchTab('members')">Members</div><div class="portal-tab" data-tab="schedule" onclick="switchTab('schedule')">Schedule</div><div class="portal-tab" data-tab="referrals" onclick="switchTab('referrals')">Referrals</div><div class="portal-tab" data-tab="tagging" onclick="switchTab('tagging')">Tagging</div></div><div class="portal-content"><div class="ptab active" id="ptab-stats"><div id="portal-stats-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px;margin-bottom:24px"></div><h3 style="color:var(--gold);font-size:0.9rem;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px">Members by Category</h3><div id="portal-cat-list" style="display:flex;flex-direction:column;gap:6px"></div></div><div class="ptab" id="ptab-members"><input id="portal-member-search" type="text" placeholder="Search members..." oninput="filterPortalMembers()" style="width:100%;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;margin-bottom:16px;outline:none"><div id="portal-member-list" style="display:flex;flex-direction:column;gap:8px"></div></div><div class="ptab" id="ptab-schedule"><div class="schedule-wrap"><h3 style="color:var(--gold);margin-bottom:16px;font-size:1rem">Meeting Schedule</h3><div class="schedule-panel"><div class="schedule-grid"><div class="schedule-item"><div class="schedule-day">Monday</div><div class="schedule-time">7:00 PM</div></div><div class="schedule-item"><div class="schedule-day">Wednesday</div><div class="schedule-time">4:00 PM</div></div><div class="schedule-item"><div class="schedule-day">Thursday</div><div class="schedule-time">9:00 AM</div></div><div class="schedule-item"><div class="schedule-day">Saturday</div><div class="schedule-time">10:00 AM</div></div></div><div class="zoom-box"><h4>Zoom Access</h4><div class="zoom-line"><strong>Zoom ID:</strong> 435 686 3146</div><div class="zoom-line"><strong>Passcode:</strong> 1956</div></div><div class="schedule-note">If you're unfamiliar with Zoom, go to <strong>Zoom.com</strong>, click <strong>Meet</strong> at the top, choose <strong>Join a Meeting</strong>, and enter the Zoom ID and passcode shown above.</div></div></div></div><div class="ptab" id="ptab-referrals"><div style="max-width:560px"><h3 style="color:var(--gold);margin-bottom:18px;font-size:1rem">Log a Referral</h3><div class="form-group"><label>Referred By (Your Name)</label><select id="ref-from" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Referred To</label><select id="ref-to" style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><option value="">Select member...</option></select></div><div class="form-group"><label>Description (optional)</label><textarea id="ref-desc" placeholder="e.g. Referred John for roof repair..." style="width:100%;padding:10px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;min-height:80px;resize:vertical;outline:none;font-family:inherit"></textarea></div><button onclick="submitReferral()" style="padding:12px 28px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s">Submit Referral</button><div id="ref-msg" style="margin-top:12px;font-size:0.9rem"></div></div><div style="margin-top:36px"><h3 style="color:var(--gold);margin-bottom:14px;font-size:1rem">Referral Log (This Session)</h3><div id="ref-log"><p style="color:var(--muted);font-size:0.88rem">No referrals logged yet this session.</p></div></div></div></div></div>
 </div>
 
 <script>
@@ -802,7 +849,7 @@ function getCategoryIcon(category) {
 searchInput.addEventListener('input', filterMembers);
 categorySelect.addEventListener('change', filterMembers);
 
-function openPortal(){document.getElementById('pw-overlay').style.display='flex';loadPortalStats();populateReferralDropdowns();} function closePortal(){document.getElementById('portal-overlay').style.display='none';document.getElementById('pw-overlay').style.display='none';} function checkPassword(){var v=document.getElementById('pw-input').value;if(v==='1956'){document.getElementById('pw-overlay').style.display='none';document.getElementById('portal-overlay').style.display='block';}else{document.getElementById('pw-error').style.display='block';}} var memberTags={};function loadTaggingTab(){var pc=document.querySelector('.portal-content');if(!pc)return;var tab=document.getElementById('ptab-tagging');if(!tab){tab=document.createElement('div');tab.className='ptab';tab.id='ptab-tagging';pc.appendChild(tab);}if(!tab.querySelector('#tag-member-list')){tab.innerHTML='<h3 style="color:var(--gold);margin-bottom:16px">Member Tagging</h3><div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap"><input id="tag-search" type="text" placeholder="Search members..." oninput="filterTagMembers()" style="flex:1;min-width:180px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><input id="tag-new" type="text" placeholder="New tag name..." style="flex:1;min-width:140px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><button onclick="addTagToSelected()" style="padding:10px 18px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer">Add Tag</button></div><div id="tag-overview" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:8px"><p style="color:var(--muted);font-size:0.85rem">No tags yet.</p></div><div id="tag-member-list" style="display:flex;flex-direction:column;gap:8px"></div>';}var ml=document.getElementById('tag-member-list');if(!ml||!allMembers.length)return;ml.innerHTML=allMembers.map(function(m){var tags=memberTags[m.displayName]||[];return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--card);border-radius:8px;border:1px solid var(--border);gap:10px"><div style="flex:1"><div style="font-weight:700;color:#c8d8ff;font-size:0.88rem">'+m.displayName+'</div><div style="font-size:0.78rem;color:var(--muted)">'+m.businessName+'</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px">'+tags.map(function(t){return '<span data-n="'+m.displayName+'" data-t="'+t+'" style="background:var(--purple2);color:var(--gold2);border-radius:20px;padding:2px 10px;font-size:0.75rem;font-weight:600;border:1px solid rgba(108,63,201,0.4);cursor:pointer" onclick="removeTag(this.dataset.n,this.dataset.t)" title="Click to remove">'+t+' &times;</span>';}).join('')+'</div></div><input type="checkbox" id="tc-'+m.displayName.replace(/\s+/g,'_')+'" style="width:18px;height:18px;cursor:pointer;accent-color:var(--purple)"></div>';}).join('');updateTagOverview();}(function(){var tab=document.getElementById('ptab-tagging');if(!tab){var pc=document.querySelector('.portal-content');if(!pc)return;tab=document.createElement('div');tab.className='ptab active';tab.id='ptab-tagging';pc.appendChild(tab);}if(!tab.querySelector('#tag-member-list')){tab.innerHTML='<h3 style="color:var(--gold);margin-bottom:16px">Member Tagging</h3><div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap"><input id="tag-search" type="text" placeholder="Search members..." oninput="filterTagMembers()" style="flex:1;min-width:180px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><input id="tag-new" type="text" placeholder="New tag name..." style="flex:1;min-width:140px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><button onclick="addTagToSelected()" style="padding:10px 18px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer">Add Tag</button></div><div id="tag-overview" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:8px"><p style="color:var(--muted);font-size:0.85rem">No tags yet.</p></div><div id="tag-member-list" style="display:flex;flex-direction:column;gap:8px"></div>';}var ml=document.getElementById('tag-member-list');if(!ml||!allMembers.length)return;ml.innerHTML=allMembers.map(function(m){var tags=memberTags[m.displayName]||[];return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--card);border-radius:8px;border:1px solid var(--border);gap:10px"><div style="flex:1"><div style="font-weight:700;color:#c8d8ff;font-size:0.88rem">'+m.displayName+'</div><div style="font-size:0.78rem;color:var(--muted)">'+m.businessName+'</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px">'+tags.map(function(t){return '<span data-n="' +m.displayName+ '" data-t="' +t+ '" style="background:var(--purple2);color:var(--gold2);border-radius:20px;padding:2px 10px;font-size:0.75rem;font-weight:600;border:1px solid rgba(108,63,201,0.4);cursor:pointer" onclick="removeTag(this.dataset.n,this.dataset.t)" title="Click to remove">'+t+' &times;</span>';}).join('')+'</div></div><input type="checkbox" id="tc-'+m.displayName.replace(/\s+/g,'_')+'" style="width:18px;height:18px;cursor:pointer;accent-color:var(--purple)"></div>';}).join('');updateTagOverview();})();function filterTagMembers(){var q=document.getElementById('tag-search').value.toLowerCase();var ml=document.getElementById('tag-member-list');if(!ml)return;Array.from(ml.children).forEach(function(el){var name=el.querySelector('div[style*="font-weight:700"]');if(name)el.style.display=name.textContent.toLowerCase().includes(q)?'':'none';});}function addTagToSelected(){var tag=document.getElementById('tag-new').value.trim();if(!tag)return;var checked=document.querySelectorAll('#tag-member-list input[type=checkbox]:checked');if(!checked.length){alert('Please select at least one member.');return;}checked.forEach(function(cb){var name=cb.id.replace('tc-','').replace(/_/g,' ');if(!memberTags[name])memberTags[name]=[];if(!memberTags[name].includes(tag))memberTags[name].push(tag);cb.checked=false;});document.getElementById('tag-new').value='';loadTaggingTab();}function removeTag(name,tag){if(memberTags[name])memberTags[name]=memberTags[name].filter(function(t){return t!==tag;});loadTaggingTab();}function updateTagOverview(){var all={};Object.values(memberTags).forEach(function(tags){tags.forEach(function(t){all[t]=(all[t]||0)+1;});});var ov=document.getElementById('tag-overview');if(!ov)return;var keys=Object.keys(all);ov.innerHTML=keys.length?keys.map(function(t){return '<div style="background:rgba(108,63,201,0.12);border:1px solid rgba(108,63,201,0.3);border-radius:20px;padding:5px 14px;font-size:0.82rem;color:var(--gold2)">'+t+' <span style="color:var(--muted);font-size:0.75rem">('+all[t]+')</span></div>';}).join(''):'<p style="color:var(--muted);font-size:0.85rem">No tags created yet.</p>';}function switchTab(t){document.querySelectorAll('.portal-tab').forEach(function(x){x.classList.remove('active');});document.querySelectorAll('.ptab').forEach(function(x){x.classList.remove('active');});document.querySelector('[data-tab="'+t+'"]').classList.add('active');if(t==='tagging')loadTaggingTab();var el=document.getElementById('ptab-'+t);if(el)el.classList.add('active');} // Initialize
+function openPortal(){document.getElementById('pw-overlay').style.display='flex';loadPortalStats();populateReferralDropdowns();} function closePortal(){document.getElementById('portal-overlay').style.display='none';document.getElementById('pw-overlay').style.display='none';} function checkPassword(){var v=document.getElementById('pw-input').value;if(v==='1956'){document.getElementById('pw-overlay').style.display='none';document.getElementById('portal-overlay').style.display='block';loadPortalStats();populateReferralDropdowns();}else{document.getElementById('pw-error').style.display='block';}} var memberTags={};function loadTaggingTab(){var pc=document.querySelector('.portal-content');if(!pc)return;var tab=document.getElementById('ptab-tagging');if(!tab){tab=document.createElement('div');tab.className='ptab';tab.id='ptab-tagging';pc.appendChild(tab);}if(!tab.querySelector('#tag-member-list')){tab.innerHTML='<h3 style="color:var(--gold);margin-bottom:16px">Member Tagging</h3><div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap"><input id="tag-search" type="text" placeholder="Search members..." oninput="filterTagMembers()" style="flex:1;min-width:180px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><input id="tag-new" type="text" placeholder="New tag name..." style="flex:1;min-width:140px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><button onclick="addTagToSelected()" style="padding:10px 18px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer">Add Tag</button></div><div id="tag-overview" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:8px"><p style="color:var(--muted);font-size:0.85rem">No tags yet.</p></div><div id="tag-member-list" style="display:flex;flex-direction:column;gap:8px"></div>';}var ml=document.getElementById('tag-member-list');if(!ml||!allMembers.length)return;ml.innerHTML=allMembers.map(function(m){var tags=memberTags[m.displayName]||[];return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--card);border-radius:8px;border:1px solid var(--border);gap:10px"><div style="flex:1"><div style="font-weight:700;color:#c8d8ff;font-size:0.88rem">'+m.displayName+'</div><div style="font-size:0.78rem;color:var(--muted)">'+m.businessName+'</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px">'+tags.map(function(t){return '<span data-n="'+m.displayName+'" data-t="'+t+'" style="background:var(--purple2);color:var(--gold2);border-radius:20px;padding:2px 10px;font-size:0.75rem;font-weight:600;border:1px solid rgba(108,63,201,0.4);cursor:pointer" onclick="removeTag(this.dataset.n,this.dataset.t)" title="Click to remove">'+t+' &times;</span>';}).join('')+'</div></div><input type="checkbox" id="tc-'+m.displayName.replace(/\s+/g,'_')+'" style="width:18px;height:18px;cursor:pointer;accent-color:var(--purple)"></div>';}).join('');updateTagOverview();}(function(){var tab=document.getElementById('ptab-tagging');if(!tab){var pc=document.querySelector('.portal-content');if(!pc)return;tab=document.createElement('div');tab.className='ptab active';tab.id='ptab-tagging';pc.appendChild(tab);}if(!tab.querySelector('#tag-member-list')){tab.innerHTML='<h3 style="color:var(--gold);margin-bottom:16px">Member Tagging</h3><div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap"><input id="tag-search" type="text" placeholder="Search members..." oninput="filterTagMembers()" style="flex:1;min-width:180px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><input id="tag-new" type="text" placeholder="New tag name..." style="flex:1;min-width:140px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><button onclick="addTagToSelected()" style="padding:10px 18px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer">Add Tag</button></div><div id="tag-overview" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:8px"><p style="color:var(--muted);font-size:0.85rem">No tags yet.</p></div><div id="tag-member-list" style="display:flex;flex-direction:column;gap:8px"></div>';}var ml=document.getElementById('tag-member-list');if(!ml||!allMembers.length)return;ml.innerHTML=allMembers.map(function(m){var tags=memberTags[m.displayName]||[];return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--card);border-radius:8px;border:1px solid var(--border);gap:10px"><div style="flex:1"><div style="font-weight:700;color:#c8d8ff;font-size:0.88rem">'+m.displayName+'</div><div style="font-size:0.78rem;color:var(--muted)">'+m.businessName+'</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px">'+tags.map(function(t){return '<span data-n="' +m.displayName+ '" data-t="' +t+ '" style="background:var(--purple2);color:var(--gold2);border-radius:20px;padding:2px 10px;font-size:0.75rem;font-weight:600;border:1px solid rgba(108,63,201,0.4);cursor:pointer" onclick="removeTag(this.dataset.n,this.dataset.t)" title="Click to remove">'+t+' &times;</span>';}).join('')+'</div></div><input type="checkbox" id="tc-'+m.displayName.replace(/\s+/g,'_')+'" style="width:18px;height:18px;cursor:pointer;accent-color:var(--purple)"></div>';}).join('');updateTagOverview();})();function filterTagMembers(){var q=document.getElementById('tag-search').value.toLowerCase();var ml=document.getElementById('tag-member-list');if(!ml)return;Array.from(ml.children).forEach(function(el){var name=el.querySelector('div[style*="font-weight:700"]');if(name)el.style.display=name.textContent.toLowerCase().includes(q)?'':'none';});}function addTagToSelected(){var tag=document.getElementById('tag-new').value.trim();if(!tag)return;var checked=document.querySelectorAll('#tag-member-list input[type=checkbox]:checked');if(!checked.length){alert('Please select at least one member.');return;}checked.forEach(function(cb){var name=cb.id.replace('tc-','').replace(/_/g,' ');if(!memberTags[name])memberTags[name]=[];if(!memberTags[name].includes(tag))memberTags[name].push(tag);cb.checked=false;});document.getElementById('tag-new').value='';loadTaggingTab();}function removeTag(name,tag){if(memberTags[name])memberTags[name]=memberTags[name].filter(function(t){return t!==tag;});loadTaggingTab();}function updateTagOverview(){var all={};Object.values(memberTags).forEach(function(tags){tags.forEach(function(t){all[t]=(all[t]||0)+1;});});var ov=document.getElementById('tag-overview');if(!ov)return;var keys=Object.keys(all);ov.innerHTML=keys.length?keys.map(function(t){return '<div style="background:rgba(108,63,201,0.12);border:1px solid rgba(108,63,201,0.3);border-radius:20px;padding:5px 14px;font-size:0.82rem;color:var(--gold2)">'+t+' <span style="color:var(--muted);font-size:0.75rem">('+all[t]+')</span></div>';}).join(''):'<p style="color:var(--muted);font-size:0.85rem">No tags created yet.</p>';}function switchTab(t){document.querySelectorAll('.portal-tab').forEach(function(x){x.classList.remove('active');});document.querySelectorAll('.ptab').forEach(function(x){x.classList.remove('active');});document.querySelector('[data-tab="'+t+'"]').classList.add('active');if(t==='tagging')loadTaggingTab();var el=document.getElementById('ptab-'+t);if(el)el.classList.add('active');} // Initialize
 fetchSheetData();
 
 </script>
