@@ -120,7 +120,7 @@ main{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
   margin-left:auto;background:rgba(255,215,122,0.13);color:var(--gold);border-radius:20px;padding:3px 10px;font-size:0.78rem;font-weight:700;border:1px solid rgba(255,215,122,0.28);
 }
 
-.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:18px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:18px}
 .member-card{
   background:linear-gradient(180deg,var(--card) 0%, var(--card2) 100%);
   border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;border:1px solid rgba(134,151,170,0.82);
@@ -145,7 +145,7 @@ main{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
 .contact-details{
   width:100%;
   margin-top:2px;
-  padding:12px 14px;
+  padding:11px 12px;
   background:#eef3f8;
   border:1px solid #cfdae5;
   border-radius:12px;
@@ -157,24 +157,11 @@ main{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
 .contact-line{
   display:flex;
   align-items:flex-start;
-  gap:10px;
+  gap:8px;
   font-size:0.93rem;
   color:#2a3e56;
   line-height:1.45;
-}
-.contact-line.phone-line .contact-value{
-  min-width:0;
-}
-.contact-line.email-line{
-  gap:8px;
-}
-.contact-line.email-line .contact-value{
-  font-size:0.82rem;
-  font-weight:700;
-  letter-spacing:0;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  overflow-wrap:anywhere;
 }
 .contact-line + .contact-line{
   padding-top:10px;
@@ -187,7 +174,15 @@ main{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
   margin-top:1px;
 }
 .contact-value{
+  font-size:1rem;
+  font-weight:800;
+  letter-spacing:0.1px;
   min-width:0;
+}
+.contact-line.email-line .contact-value{
+  font-size:0.86rem;
+  letter-spacing:-0.1px;
+  line-height:1.25;
 }
 .contact-grid{
   width:100%;
@@ -315,7 +310,7 @@ footer strong{color:var(--gold)}
   background:rgba(255,255,255,0.5);
   border:1px solid rgba(146,166,188,0.7);
   border-radius:12px;
-  padding:12px 14px;
+  padding:11px 12px;
 }
 .schedule-day{
   color:var(--gold);
@@ -356,9 +351,6 @@ footer strong{color:var(--gold)}
   .schedule-grid{grid-template-columns:1fr;}
 }
 
-@media (max-width:900px){
-  .card-grid{grid-template-columns:1fr}
-}
 @media (max-width:700px){
   .hero-banner{height:190px}
   .card-grid{grid-template-columns:1fr}
@@ -700,8 +692,8 @@ function createMemberCard(member) {
 
       ${(member.phone || member.email) ? `
         <div class="contact-details">
-          ${member.phone ? `<div class="contact-line phone-line"><span class="contact-icon">☎</span><span class="contact-value">${escapeHtml(member.phone)}</span></div>` : ''}
-          ${member.email ? `<div class="contact-line email-line"><span class="contact-icon">✉</span><span class="contact-value" title="${escapeHtml(member.email)}">${escapeHtml(member.email)}</span></div>` : ''}
+          ${member.phone ? `<div class="contact-line"><span class="contact-icon">☎</span><span class="contact-value">${escapeHtml(member.phone)}</span></div>` : ''}
+          ${member.email ? `<div class="contact-line email-line"><span class="contact-icon">✉</span><span class="contact-value">${escapeHtml(member.email)}</span></div>` : ''}
         </div>
       ` : ''}
 
