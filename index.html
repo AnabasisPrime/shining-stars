@@ -578,14 +578,57 @@ const statusBar = document.getElementById('status-bar');
 const loaderDiv = statusBar.querySelector('.loader');
 
 // Fetch data from Google Sheets
+function parseCsv(text) {
+  const rows = [];
+  let row = [];
+  let field = '';
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    const nextChar = text[i + 1];
+
+    if (char === '"') {
+      if (inQuotes && nextChar === '"') {
+        field += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (char === ',' && !inQuotes) {
+      row.push(field);
+      field = '';
+    } else if ((char === '\n' || char === '\r') && !inQuotes) {
+      if (char === '\r' && nextChar === '\n') {
+        i++;
+      }
+      row.push(field);
+      if (row.some(value => value.trim() !== '')) {
+        rows.push(row);
+      }
+      row = [];
+      field = '';
+    } else {
+      field += char;
+    }
+  }
+
+  row.push(field);
+  if (row.some(value => value.trim() !== '')) {
+    rows.push(row);
+  }
+
+  return rows;
+}
+
 async function fetchSheetData() {
   try {
-    const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSZTmTUt2DLDOQSkpALwRIItUzYKm7nChMLumbHy5ll9g4QivmiDsvOYJgsg546c3R_KkSMtDQWd3Vk/pub?output=csv';
-    const response = await fetch(url);
+    const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSZTmTUt2DLDOQSkpALwRIItUzYKm7nChMLumbHy5ll9g4QivmiDsvOYJgsg546c3R_KkSMtDQWd3Vk/pub?output=csv&cb=' + Date.now();
+    const response = await fetch(url, { cache: 'no-store' });
     const csvText = await response.text();
     
 // Parse CSV into rows
-const rows = csvText.trim().split('\n').map(r => r.split(','));
+const rows = parseCsv(csvText);
 const headers = rows[0].map(h => h.trim());
 
 const HEADER_MAP = {
@@ -597,6 +640,8 @@ const HEADER_MAP = {
   "Email": "email",
   "Phone": "phone",
   "Website": "website",
+  "Public": "public",
+  "Public?": "public",
   "photoUrl": "photoUrl",
   "PhotoUrl": "photoUrl",
   "Photo URL": "photoUrl"
@@ -609,6 +654,11 @@ allMembers = rows.slice(1).map(row => {
     obj[key] = row[i] ? row[i].trim() : '';
   });
   return obj;
+}).filter(member => {
+  if (typeof member.public === 'undefined') {
+    return false;
+  }
+  return member.public.trim().toLowerCase() === 'yes';
 });
 
 populateCategories();
