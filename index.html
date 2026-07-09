@@ -376,6 +376,39 @@ footer strong{color:var(--gold)}
   font-size:0.94rem;
 }
 
+
+.spotlight-band{
+  max-width:1320px;
+  margin:22px auto 0;
+  padding:0 20px;
+}
+.spotlight-shell{
+  background:linear-gradient(180deg,#fffaf0 0%, #eff6fb 100%);
+  border:1px solid rgba(210,176,92,0.55);
+  border-radius:24px;
+  box-shadow:0 16px 36px rgba(15,23,42,0.12);
+  padding:26px;
+}
+.spotlight-shell h2{color:#18345b;font-size:clamp(1.45rem,2.7vw,2.15rem);margin-bottom:8px}
+.spotlight-shell>p{color:#29476c;line-height:1.62;font-size:0.98rem;max-width:860px}
+.spotlight-layout{display:grid;grid-template-columns:minmax(240px,0.75fr) minmax(0,1.25fr);gap:22px;margin-top:20px;align-items:start}
+.spotlight-public-card{background:#f7fbff;border:1px solid #d2dfea;border-radius:18px;padding:18px;display:grid;gap:14px;text-align:center}
+.spotlight-public-photo{width:132px;height:132px;border-radius:50%;overflow:hidden;margin:0 auto;background:#e5eef7;border:2px solid rgba(205,176,96,0.68);display:flex;align-items:center;justify-content:center;color:#315f86;font-size:2.2rem;font-weight:900}
+.spotlight-public-photo img{width:100%;height:100%;object-fit:cover}
+.spotlight-public-card h3{font-size:1.28rem;color:#18345b;margin:0}
+.spotlight-public-card .business{font-weight:900;color:#9a7417}
+.spotlight-public-card .profession{color:#315f86;font-weight:800}
+.spotlight-detail-grid{display:grid;gap:12px}
+.spotlight-detail{background:#f7fbff;border:1px solid #d2dfea;border-radius:14px;padding:14px;color:#29476c;line-height:1.55}
+.spotlight-detail strong{display:block;color:#7d5b0d;font-size:0.76rem;letter-spacing:0.65px;text-transform:uppercase;margin-bottom:5px}
+.spotlight-contact-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.spotlight-archive{margin-top:22px;border-top:1px solid #d7e4ef;padding-top:18px}
+.spotlight-archive h3{color:#18345b;margin-bottom:10px}
+.spotlight-archive-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.spotlight-archive-card{background:#f7fbff;border:1px solid #d2dfea;border-radius:14px;padding:12px;color:#29476c}
+.spotlight-archive-card strong{display:block;color:#18345b;margin-bottom:3px}
+.spotlight-archive-card span{display:block;color:#7d5b0d;font-size:0.8rem;font-weight:900}
+
 .journey-band,.visit-band{
   max-width:1320px;
   margin:22px auto 0;
@@ -401,7 +434,7 @@ footer strong{color:var(--gold)}
 .section-intro p{line-height:1.6;color:#dce8f3}
 
 @media (max-width: 900px){
-  .about-grid,.journey-steps,.visit-grid{grid-template-columns:1fr;}
+  .about-grid,.journey-steps,.visit-grid,.spotlight-layout,.spotlight-archive-grid{grid-template-columns:1fr;}
 }
 @media (max-width: 700px){
   .schedule-grid{grid-template-columns:1fr;}
@@ -560,7 +593,7 @@ footer strong{color:var(--gold)}
   </div>
 </div>
 
-<nav class="visitor-actions" aria-label="Visitor actions"><a class="cta-btn cta-primary" href="#visit-meeting">Visit a Meeting</a><a class="cta-btn cta-secondary" href="#members">Meet Our Members</a><a class="cta-btn cta-secondary" href="#open-professions">Open Professions</a></nav><button class="portal-btn" id="portal-btn" onclick="openPortal()">Members Portal</button>
+<nav class="visitor-actions" aria-label="Visitor actions"><a class="cta-btn cta-primary" href="#visit-meeting">Visit a Meeting</a><a class="cta-btn cta-secondary" href="#member-spotlight">Member Spotlight</a><a class="cta-btn cta-secondary" href="#members">Meet Our Members</a><a class="cta-btn cta-secondary" href="#open-professions">Open Professions</a></nav><button class="portal-btn" id="portal-btn" onclick="openPortal()">Members Portal</button>
 </header>
 
 <div class="about-band" id="about">
@@ -584,6 +617,16 @@ footer strong{color:var(--gold)}
         <h3>Community-Focused Growth</h3>
         <p>We support business growth in a way that also strengthens the local community, households, and neighborhoods we serve.</p>
       </div>
+    </div>
+  </section>
+</div>
+
+<div class="spotlight-band" id="member-spotlight">
+  <section class="spotlight-shell" aria-labelledby="spotlight-title">
+    <h2 id="spotlight-title">Member Spotlight</h2>
+    <p>Each spotlight celebrates a trusted Alliance member and introduces visitors to the kind of professionals who make the group valuable.</p>
+    <div id="spotlight-content" class="spotlight-layout">
+      <div class="spotlight-public-card"><p>Loading spotlight...</p></div>
     </div>
   </section>
 </div>
@@ -712,7 +755,13 @@ const HEADER_MAP = {
   "Public?": "public",
   "photoUrl": "photoUrl",
   "PhotoUrl": "photoUrl",
-  "Photo URL": "photoUrl"
+  "Photo URL": "photoUrl",
+  "Spotlight Status": "spotlightStatus",
+  "Spotlight Last Featured": "spotlightLastFeatured",
+  "Spotlight Feature Count": "spotlightFeatureCount",
+  "Spotlight Notes": "spotlightNotes",
+  "Spotlight Selected By": "spotlightSelectedBy",
+  "Spotlight Updated": "spotlightUpdated"
 };
 
 allMembers = rows.slice(1).map(row => {
@@ -733,6 +782,7 @@ populateCategories();
 filteredMembers = [...allMembers];
 loadPortalStats();
 populateReferralDropdowns();
+renderSpotlight();
 renderDirectory();
  
   } catch (error) {
@@ -773,6 +823,68 @@ function filterMembers() {
   });
   
   renderDirectory();
+}
+
+
+function memberInitials(member) {
+  const name = (member.displayName || member.businessName || '').trim();
+  return name ? name.split(/\s+/).map(part => part[0]).join('').substring(0, 2).toUpperCase() : 'SS';
+}
+
+function spotlightMember() {
+  const current = allMembers.find(member => (member.spotlightStatus || '').toLowerCase() === 'current');
+  if (current) {
+    return current;
+  }
+  return allMembers
+    .filter(member => member.spotlightLastFeatured)
+    .sort((a, b) => (b.spotlightLastFeatured || '').localeCompare(a.spotlightLastFeatured || ''))[0];
+}
+
+function renderSpotlight() {
+  const container = document.getElementById('spotlight-content');
+  if (!container) {
+    return;
+  }
+  const member = spotlightMember();
+  if (!member) {
+    container.innerHTML = '<div class="spotlight-public-card"><h3>Spotlight coming soon</h3><p>The Alliance will use this space to celebrate members and help visitors meet the people behind the professions.</p></div>';
+    return;
+  }
+
+  const photoSrc = MEMBER_PHOTOS[member.displayName] || member.photoUrl;
+  const safePhone = sanitizePhone(member.phone || '');
+  const safeWebsite = normalizeWebsite(member.website || '');
+  const archive = allMembers
+    .filter(item => item !== member && item.spotlightLastFeatured)
+    .sort((a, b) => (b.spotlightLastFeatured || '').localeCompare(a.spotlightLastFeatured || ''))
+    .slice(0, 3);
+
+  container.innerHTML = `
+    <article class="spotlight-public-card">
+      <div class="spotlight-public-photo">
+        ${photoSrc ? `<img src="${photoSrc}" alt="${escapeHtml(member.displayName || member.businessName || 'Member Spotlight')}">` : memberInitials(member)}
+      </div>
+      <div>
+        <h3>${escapeHtml(member.displayName || member.businessName || 'Featured Member')}</h3>
+        <p class="business">${escapeHtml(member.businessName || '')}</p>
+        <p class="profession">${escapeHtml(member.category || 'Alliance Member')}</p>
+      </div>
+    </article>
+    <div class="spotlight-detail-grid">
+      <div class="spotlight-detail"><strong>What they do</strong>${escapeHtml(member.shortDescription || 'A trusted local professional serving Southwest Florida.')}</div>
+      <div class="spotlight-detail"><strong>Ideal referral</strong>${escapeHtml(member.idealReferrals || 'Someone who would value a professional introduction.')}</div>
+      <div class="spotlight-detail"><strong>Contact</strong>
+        <div class="spotlight-contact-row">
+          ${member.phone ? `<a class="contact-btn" href="tel:${safePhone}">Call</a>` : ''}
+          ${member.email ? `<a class="contact-btn" href="mailto:${member.email}">Email</a>` : ''}
+          ${member.website ? `<a class="contact-btn" href="${safeWebsite}" target="_blank" rel="noopener noreferrer">Website</a>` : ''}
+          <a class="contact-btn" href="#members">Full Profile</a>
+        </div>
+      </div>
+    </div>
+    ${archive.length ? `<div class="spotlight-archive" style="grid-column:1/-1"><h3>Recent Spotlights</h3><div class="spotlight-archive-grid">${archive.map(item => `<div class="spotlight-archive-card"><strong>${escapeHtml(item.displayName || item.businessName || 'Member')}</strong><span>${escapeHtml(item.spotlightLastFeatured || '')}</span><p>${escapeHtml(item.businessName || '')}</p></div>`).join('')}</div></div>` : ''}
+  `;
 }
 
 // Render member directory
@@ -828,10 +940,10 @@ function renderDirectory() {
   });
 
   const groupOrder = [
-    'Financial & Business Advisory',
     'Home, Property & Real Estate',
     'Legal & Professional Services',
     'Marketing, Media & Business Growth',
+    'Financial & Business Advisory',
     'Additional Member Professions'
   ];
 
