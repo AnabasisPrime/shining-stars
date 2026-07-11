@@ -1,0 +1,11 @@
+{
+  "highestNonRudolfIndex": 16,
+  "lowestRudolfIndex": 17,
+  "passed": true,
+  "presidentBusinesses": [
+    "Vivint",
+    "Primerica",
+    "PFS Investments Inc."
+  ],
+  "total": 20
+}

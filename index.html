@@ -156,9 +156,22 @@ main{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
   min-height:100%;
 }
 .member-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 18px 36px rgba(15,23,42,0.18);
+  transform:translateY(-8px) scale(1.015);
+  box-shadow:0 24px 48px rgba(15,23,42,0.28);
   border-color:#c7b372;
+}
+.member-card:focus-within{outline:3px solid #ffd76a;outline-offset:4px;transform:translateY(-5px);box-shadow:0 22px 44px rgba(15,23,42,0.25)}
+.member-more{width:100%;margin-top:auto;border-top:1px solid #d2dfea;padding-top:10px;text-align:left}
+.member-more summary{align-items:center;background:#edf3f8;border:1px solid #b7c6d5;border-radius:9px;color:#18345b;cursor:pointer;display:flex;font-weight:900;justify-content:space-between;list-style:none;padding:10px 12px}
+.member-more summary::-webkit-details-marker{display:none}
+.member-more summary::after{content:'+';font-size:1.2rem}
+.member-more[open] summary::after{content:'−'}
+.member-more-content{background:#f7fafc;border:1px solid #d5e0e9;border-radius:0 0 9px 9px;color:#334e68;display:grid;gap:10px;line-height:1.5;padding:12px}
+.member-more-content p{margin:0}
+.member-more-content strong{color:#7d5b0d;display:block;font-size:.72rem;letter-spacing:.5px;text-transform:uppercase}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .member-card,.member-card:hover,.member-card:focus-within{transition:none;transform:none}
 }
 .photo-frame{
   width:82px;height:82px;border-radius:50%;overflow:hidden;background:#f4f7fb;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.5rem;color:#c79518;border:2px solid rgba(205,176,96,0.7)
@@ -762,6 +775,21 @@ const HEADER_MAP = {
   "Spotlight Notes": "spotlightNotes",
   "Spotlight Selected By": "spotlightSelectedBy",
   "Spotlight Updated": "spotlightUpdated"
+  ,"Extended Description": "extendedDescription"
+  ,"Biography": "biography"
+  ,"Bio": "biography"
+  ,"Services": "services"
+  ,"Services and Specialties": "services"
+  ,"Problems Solved": "problemsSolved"
+  ,"Service Area": "serviceArea"
+  ,"Credentials": "credentials"
+  ,"Interesting Fact": "interestingFact"
+  ,"Logo URL": "logoUrl"
+  ,"Facebook URL": "facebookUrl"
+  ,"LinkedIn URL": "linkedinUrl"
+  ,"Owner": "owner"
+  ,"Business Owner": "owner"
+  ,"Member Name": "memberName"
 };
 
 allMembers = rows.slice(1).map(row => {
@@ -775,8 +803,11 @@ allMembers = rows.slice(1).map(row => {
   if (typeof member.public === 'undefined') {
     return false;
   }
-  return member.public.trim().toLowerCase() === 'yes';
+  const isPatEsposito = `${member.displayName || ''} ${member.businessName || ''}`.toLowerCase().includes('pat esposito');
+  return member.public.trim().toLowerCase() === 'yes' && !isPatEsposito;
 });
+
+allMembers = orderPublicMembers(allMembers);
 
 populateCategories();
 filteredMembers = [...allMembers];
@@ -811,7 +842,7 @@ function filterMembers() {
   const searchTerm = searchInput.value.toLowerCase();
   const selectedCategory = categorySelect.value;
   
-  filteredMembers = allMembers.filter(member => {
+  filteredMembers = orderPublicMembers(allMembers.filter(member => {
     const matchesSearch = !searchTerm ||
       member.displayName.toLowerCase().includes(searchTerm) ||
       member.businessName.toLowerCase().includes(searchTerm) ||
@@ -820,7 +851,7 @@ function filterMembers() {
     const matchesCategory = !selectedCategory || member.category === selectedCategory;
     
     return matchesSearch && matchesCategory;
-  });
+  }));
   
   renderDirectory();
 }
@@ -873,7 +904,7 @@ function renderSpotlight() {
     </article>
     <div class="spotlight-detail-grid">
       <div class="spotlight-detail"><strong>What they do</strong>${escapeHtml(member.shortDescription || 'A trusted local professional serving Southwest Florida.')}</div>
-      <div class="spotlight-detail"><strong>Ideal referral</strong>${escapeHtml(member.idealReferrals || 'Someone who would value a professional introduction.')}</div>
+      <div class="spotlight-detail"><strong>How they can help</strong>${escapeHtml(member.idealReferrals || member.shortDescription || 'A professional resource available to people in Southwest Florida.')}</div>
       <div class="spotlight-detail"><strong>Contact</strong>
         <div class="spotlight-contact-row">
           ${member.phone ? `<a class="contact-btn" href="tel:${safePhone}">Call</a>` : ''}
@@ -920,14 +951,28 @@ function getProfessionGroup(category) {
   };
 }
 
-function renderDirectory() {
+const PRESIDENT_OWNER_IDENTITIES = ['rudolf deas', 'brad deas'];
+
+function isRudolfBusiness(member) {
+  const identity = `${member.owner || ''} ${member.displayName || ''} ${member.memberName || ''}`.toLowerCase();
+  return PRESIDENT_OWNER_IDENTITIES.some(ownerName => identity.includes(ownerName));
+}
+
+function orderPublicMembers(members) {
+  return [...members].sort((a, b) => {
+    const leadershipDifference = Number(isRudolfBusiness(a)) - Number(isRudolfBusiness(b));
+    if (leadershipDifference) return leadershipDifference;
+    return (a.displayName || a.businessName || '').localeCompare(b.displayName || b.businessName || '');
+  });
+}
+
+function renderMemberGroups(members, leadershipOnly=false) {
   if (filteredMembers.length === 0) {
-    directoryDiv.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div><p>No members found matching your criteria.</p></div>';
-    return;
+    return '';
   }
 
   const byGroup = {};
-  filteredMembers.forEach(member => {
+  members.forEach(member => {
     const category = (member.category || 'Other').replace(/^"|"$/g, '').trim();
     const group = getProfessionGroup(category);
     if (!byGroup[group.title]) {
@@ -947,7 +992,7 @@ function renderDirectory() {
     'Additional Member Professions'
   ];
 
-  let html = '';
+  let html = leadershipOnly ? '<section class="profession-group leadership-businesses" aria-label="Alliance Leadership Businesses"><div class="profession-group-header"><div class="profession-group-kicker">Alliance Leadership</div><h2>Founder & President</h2><p>Rudolf Deas serves the Alliance and presents his professional resources after every other active member.</p></div>' : '';
   groupOrder.filter(group => byGroup[group]).forEach(groupTitle => {
     const group = byGroup[groupTitle];
     html += `
@@ -979,7 +1024,37 @@ function renderDirectory() {
     html += '</section>';
   });
 
-  directoryDiv.innerHTML = html;
+  return html + (leadershipOnly ? '</section>' : '');
+}
+
+function renderDirectory() {
+  if (filteredMembers.length === 0) {
+    directoryDiv.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div><p>No members found matching your criteria.</p></div>';
+    return;
+  }
+  const regularMembers = filteredMembers.filter(member => !isRudolfBusiness(member));
+  const leadershipMembers = filteredMembers.filter(isRudolfBusiness);
+  directoryDiv.innerHTML = renderMemberGroups(regularMembers) + renderMemberGroups(leadershipMembers, true);
+  window.__presidentOrderingProof = verifyPresidentOrdering();
+}
+
+function verifyPresidentOrdering() {
+  const cards = Array.from(document.querySelectorAll('#directory .member-card'));
+  const nonPresidentIndexes = [];
+  const presidentIndexes = [];
+  cards.forEach((card, index) => {
+    (card.dataset.presidentOwned === 'true' ? presidentIndexes : nonPresidentIndexes).push(index);
+  });
+  const highestNonPresidentIndex = nonPresidentIndexes.length ? Math.max(...nonPresidentIndexes) : -1;
+  const lowestPresidentIndex = presidentIndexes.length ? Math.min(...presidentIndexes) : Number.POSITIVE_INFINITY;
+  return {
+    passed: highestNonPresidentIndex < lowestPresidentIndex,
+    highestNonPresidentIndex,
+    lowestPresidentIndex,
+    totalCards: cards.length,
+    presidentCards: presidentIndexes.length,
+    finalBusinesses: cards.slice(Math.max(0, lowestPresidentIndex)).map(card => card.dataset.businessName || '')
+  };
 }
 
 const MEMBER_PHOTOS={'Dan Donahoe':'https://drive.google.com/thumbnail?id=1K_zgjS3a1YpIGYIU2nzLcjiig1bCZa7g&sz=w200','Tracey Von Schmittou':'https://drive.google.com/thumbnail?id=1pJ5rYwxqW02Ru3fzcPHjjJi8CrSqI0EQ&sz=w200'};
@@ -1035,7 +1110,7 @@ function createMemberCard(member) {
   }));
 
   return `
-    <article class="member-card">
+    <article class="member-card" data-president-owned="${isRudolfBusiness(member)}" data-member-name="${escapeHtml(member.displayName || '')}" data-business-name="${escapeHtml(member.businessName || '')}">
       <div class="photo-frame">
         ${photoSrc ? `<img src="${photoSrc}" alt="${escapeHtml(member.displayName || member.businessName || 'Member')}">` : member.hasPhoto ? `<img src="photos/${member.displayName.replace(/\s+/g, '_')}.jpg" alt="${escapeHtml(member.displayName || member.businessName || 'Member')}">` : initials}
       </div>
@@ -1068,6 +1143,20 @@ function createMemberCard(member) {
           ${escapeHtml(member.idealReferrals)}
         </div>
       ` : ''}
+      <details class="member-more">
+        <summary>More Info</summary>
+        <div class="member-more-content">
+          <p><strong>Profession</strong>${escapeHtml(member.category || 'Alliance Member')}</p>
+          <p><strong>About</strong>${escapeHtml(member.extendedDescription || member.biography || member.shortDescription || 'Additional approved profile information is not yet available.')}</p>
+          ${member.services ? `<p><strong>Services and specialties</strong>${escapeHtml(member.services)}</p>` : ''}
+          ${member.problemsSolved ? `<p><strong>How they help</strong>${escapeHtml(member.problemsSolved)}</p>` : ''}
+          ${member.serviceArea ? `<p><strong>Service area</strong>${escapeHtml(member.serviceArea)}</p>` : ''}
+          ${member.credentials ? `<p><strong>Credentials</strong>${escapeHtml(member.credentials)}</p>` : ''}
+          ${member.interestingFact ? `<p><strong>Interesting fact</strong>${escapeHtml(member.interestingFact)}</p>` : ''}
+          ${member.linkedinUrl ? `<a class="contact-btn" href="${normalizeWebsite(member.linkedinUrl)}" target="_blank" rel="noopener noreferrer">LinkedIn</a>` : ''}
+          ${member.facebookUrl ? `<a class="contact-btn" href="${normalizeWebsite(member.facebookUrl)}" target="_blank" rel="noopener noreferrer">Facebook</a>` : ''}
+        </div>
+      </details>
     </article>
   `;
 }
