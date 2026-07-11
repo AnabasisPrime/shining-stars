@@ -23,6 +23,7 @@ class PublicDirectoryContractTests(unittest.TestCase):
         self.assertIn("function verifyPresidentOrdering", HTML)
         self.assertIn("highestNonPresidentIndex < lowestPresidentIndex", HTML)
         self.assertIn('data-president-owned="${isRudolfBusiness(member)}"', HTML)
+        self.assertIn('id="alliance-leadership-businesses"', HTML)
 
     def test_rendered_indexes_put_every_president_business_last(self):
         proof = json.loads(PROOF_PATH.read_text(encoding="utf-8"))

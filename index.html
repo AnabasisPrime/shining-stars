@@ -992,7 +992,7 @@ function renderMemberGroups(members, leadershipOnly=false) {
     'Additional Member Professions'
   ];
 
-  let html = leadershipOnly ? '<section class="profession-group leadership-businesses" aria-label="Alliance Leadership Businesses"><div class="profession-group-header"><div class="profession-group-kicker">Alliance Leadership</div><h2>Founder & President</h2><p>Rudolf Deas serves the Alliance and presents his professional resources after every other active member.</p></div>' : '';
+  let html = leadershipOnly ? '<section class="profession-group leadership-businesses" id="alliance-leadership-businesses" aria-label="Alliance Leadership Businesses"><div class="profession-group-header"><div class="profession-group-kicker">Alliance Leadership</div><h2>Founder & President</h2><p>Rudolf Deas serves the Alliance and presents his professional resources after every other active member.</p></div>' : '';
   groupOrder.filter(group => byGroup[group]).forEach(groupTitle => {
     const group = byGroup[groupTitle];
     html += `
