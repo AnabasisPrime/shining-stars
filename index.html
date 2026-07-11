@@ -958,10 +958,23 @@ function isRudolfBusiness(member) {
   return PRESIDENT_OWNER_IDENTITIES.some(ownerName => identity.includes(ownerName));
 }
 
+function presidentBusinessRank(member) {
+  const business = `${member.businessName || ''} ${member.category || ''}`.toLowerCase();
+  if (business.includes('investment') || business.includes('retirement')) return 0;
+  if (business.includes('life insurance') || business.includes('primerica')) return 1;
+  if (business.includes('legal')) return 2;
+  if (business.includes('vivint') || business.includes('home security') || business.includes('smart home')) return 3;
+  return 4;
+}
+
 function orderPublicMembers(members) {
   return [...members].sort((a, b) => {
     const leadershipDifference = Number(isRudolfBusiness(a)) - Number(isRudolfBusiness(b));
     if (leadershipDifference) return leadershipDifference;
+    if (isRudolfBusiness(a) && isRudolfBusiness(b)) {
+      const businessRankDifference = presidentBusinessRank(a) - presidentBusinessRank(b);
+      if (businessRankDifference) return businessRankDifference;
+    }
     return (a.displayName || a.businessName || '').localeCompare(b.displayName || b.businessName || '');
   });
 }
@@ -969,6 +982,14 @@ function orderPublicMembers(members) {
 function renderMemberGroups(members, leadershipOnly=false) {
   if (filteredMembers.length === 0) {
     return '';
+  }
+
+  if (leadershipOnly) {
+    const orderedLeadership = orderPublicMembers(members);
+    return `<section class="profession-group leadership-businesses" id="alliance-leadership-businesses" aria-label="Alliance Leadership Businesses">
+      <div class="profession-group-header"><div class="profession-group-kicker">Alliance Leadership</div><h2>Founder & President</h2><p>Rudolf Deas serves the Alliance and presents his professional resources after every other active member.</p></div>
+      <div class="cat-section"><div class="cat-header"><span class="cat-icon" aria-hidden="true">★</span><h3>President Businesses</h3><span class="cat-count">${orderedLeadership.length} businesses</span></div>
+      <div class="card-grid">${orderedLeadership.map(member => createMemberCard(member)).join('')}</div></div></section>`;
   }
 
   const byGroup = {};
@@ -992,7 +1013,7 @@ function renderMemberGroups(members, leadershipOnly=false) {
     'Additional Member Professions'
   ];
 
-  let html = leadershipOnly ? '<section class="profession-group leadership-businesses" id="alliance-leadership-businesses" aria-label="Alliance Leadership Businesses"><div class="profession-group-header"><div class="profession-group-kicker">Alliance Leadership</div><h2>Founder & President</h2><p>Rudolf Deas serves the Alliance and presents his professional resources after every other active member.</p></div>' : '';
+  let html = '';
   groupOrder.filter(group => byGroup[group]).forEach(groupTitle => {
     const group = byGroup[groupTitle];
     html += `
@@ -1024,7 +1045,7 @@ function renderMemberGroups(members, leadershipOnly=false) {
     html += '</section>';
   });
 
-  return html + (leadershipOnly ? '</section>' : '');
+  return html;
 }
 
 function renderDirectory() {

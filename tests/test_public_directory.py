@@ -30,7 +30,7 @@ class PublicDirectoryContractTests(unittest.TestCase):
         self.assertTrue(proof["passed"])
         self.assertLess(proof["highestNonRudolfIndex"], proof["lowestRudolfIndex"])
         self.assertEqual(
-            ["Vivint", "Primerica", "PFS Investments Inc."],
+            ["PFS Investments Inc.", "Primerica", "Vivint"],
             proof["presidentBusinesses"],
         )
 
