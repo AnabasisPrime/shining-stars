@@ -459,10 +459,10 @@ html[data-site-theme] footer{background:var(--ux-navy-deep);border-top:4px solid
   html[data-site-theme] .hero-banner{background-position:64% center}
   html[data-site-theme] .hero-banner::after{background:linear-gradient(180deg,rgba(6,22,36,.48),rgba(6,22,36,.9))}
   html[data-site-theme] .logo-wrap{align-items:flex-end;max-width:none;padding:90px 24px 212px}
-  html[data-site-theme] .header-text h1{font-size:2.45rem}
-  html[data-site-theme] .header-text p{font-size:1rem;margin-top:14px}
+  html[data-site-theme] .header-text h1{font-size:2.45rem;max-width:100%;width:100%}
+  html[data-site-theme] .header-text p{font-size:1rem;margin-top:14px;max-width:100%;width:100%}
   html[data-site-theme] .visitor-actions{bottom:24px;display:grid;grid-template-columns:1fr 1fr;left:20px;padding:0;right:20px;transform:none;width:auto}
-  html[data-site-theme] .cta-btn{font-size:.82rem;padding:10px}
+  html[data-site-theme] .cta-btn{font-size:.82rem;min-width:0;overflow-wrap:anywhere;padding:10px;white-space:normal;width:100%}
   html[data-site-theme] .portal-btn{right:18px;top:18px}
   html[data-site-theme] .about-band,
   html[data-site-theme] .spotlight-band,
@@ -474,6 +474,8 @@ html[data-site-theme] footer{background:var(--ux-navy-deep);border-top:4px solid
   html[data-site-theme] .journey-shell,
   html[data-site-theme] .visit-shell,
   html[data-site-theme] .inquiry-shell{padding:24px 20px}
+  html[data-site-theme] .about-shell h2,
+  html[data-site-theme] .about-shell p{max-width:100%;overflow-wrap:anywhere}
   html[data-site-theme] .about-grid,
   html[data-site-theme] .journey-steps,
   html[data-site-theme] .visit-grid,
