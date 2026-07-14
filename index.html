@@ -734,6 +734,7 @@ footer strong{color:var(--gold)}
         <div class="inquiry-field honeypot" aria-hidden="true"><label for="inquiry-company">Company website</label><input id="inquiry-company" name="company" tabindex="-1" autocomplete="off"></div>
       </div>
       <div class="inquiry-note">Leadership will receive the message directly. No mailing-list enrollment is performed.</div>
+      <input type="hidden" id="inquiry-submission-id" name="submissionId" value="">
       <div class="inquiry-actions"><button class="inquiry-btn" id="send-inquiry" type="submit">Send Message</button></div>
       <div class="inquiry-result" id="inquiry-result" role="status" aria-live="polite"></div>
     </form>
@@ -778,8 +779,11 @@ const CONTACT_ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbxAZ-MW1KM
 const leadershipInquiryForm = document.getElementById('leadership-inquiry-form');
 const inquiryResult = document.getElementById('inquiry-result');
 const sendInquiryButton = document.getElementById('send-inquiry');
-const inquiryTransport = document.getElementById('inquiry-transport');
+const inquiryTransport = document.getElementById('leadership-submit-frame');
 let contactSubmissionTimer;
+let contactSubmissionPending = false;
+let contactSubmissionCompleted = false;
+let contactSubmissionId = '';
 let activeDialogOpener = null;
 
 const traditionalProfessions = [
@@ -873,17 +877,40 @@ leadershipInquiryForm.addEventListener('submit', function(event){
     return;
   }
   leadershipInquiryForm.action = CONTACT_ENDPOINT_URL;
+  contactSubmissionId = `WEB-INQ-${new Date().toISOString().replace(/[-:TZ.]/g, '').slice(0, 14)}-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
+  document.getElementById('inquiry-submission-id').value = contactSubmissionId;
+  contactSubmissionPending = true;
+  contactSubmissionCompleted = false;
   sendInquiryButton.disabled = true;
   sendInquiryButton.textContent = 'Sending...';
   inquiryResult.className = 'inquiry-result visible';
   inquiryResult.textContent = 'Sending your message securely...';
   clearTimeout(contactSubmissionTimer);
   contactSubmissionTimer = setTimeout(() => {
+    if (!contactSubmissionPending) return;
+    contactSubmissionPending = false;
     sendInquiryButton.disabled = false;
     sendInquiryButton.textContent = 'Send Message';
     inquiryResult.className = 'inquiry-result visible error';
-    inquiryResult.textContent = 'Delivery could not be confirmed. Please try again; no success has been recorded.';
-  }, 15000);
+    inquiryResult.textContent = 'Your message could not be confirmed as submitted. Your information was not cleared. Please try again or use another listed contact method.';
+  }, 20000);
+});
+
+inquiryTransport.addEventListener('load', function(){
+  if (!contactSubmissionPending || contactSubmissionCompleted) return;
+  clearTimeout(contactSubmissionTimer);
+  contactSubmissionPending = false;
+  contactSubmissionCompleted = true;
+  leadershipInquiryForm.reset();
+  document.getElementById('inquiry-submission-id').value = '';
+  sendInquiryButton.textContent = 'Message Sent';
+  inquiryResult.className = 'inquiry-result visible success';
+  inquiryResult.textContent = 'Message sent successfully. Alliance leadership has received your inquiry.';
+  setTimeout(() => {
+    contactSubmissionCompleted = false;
+    sendInquiryButton.disabled = false;
+    sendInquiryButton.textContent = 'Send Message';
+  }, 5000);
 });
 
 window.addEventListener('message', function(event){
@@ -894,10 +921,15 @@ window.addEventListener('message', function(event){
   sendInquiryButton.disabled = false;
   sendInquiryButton.textContent = 'Send Message';
   if (payload.ok) {
+    contactSubmissionPending = false;
+    contactSubmissionCompleted = true;
     leadershipInquiryForm.reset();
     inquiryResult.className = 'inquiry-result visible success';
     inquiryResult.textContent = payload.message || (payload.duplicate ? 'This message was already received. No duplicate was sent.' : 'Your message was delivered to Alliance leadership.');
+    sendInquiryButton.textContent = 'Message Sent';
+    setTimeout(() => { contactSubmissionCompleted = false; sendInquiryButton.disabled = false; sendInquiryButton.textContent = 'Send Message'; }, 5000);
   } else {
+    contactSubmissionPending = false;
     inquiryResult.className = 'inquiry-result visible error';
     inquiryResult.textContent = payload.message || 'The message was not delivered. Please try again.';
   }
@@ -1123,6 +1155,10 @@ function renderSpotlight() {
       <div class="spotlight-detail"><strong>What they do</strong>${escapeHtml(member.shortDescription || 'A trusted local professional serving Southwest Florida.')}</div>
       <div class="spotlight-detail"><strong>How they can help</strong>${escapeHtml(member.idealReferrals || member.shortDescription || 'A professional resource available to people in Southwest Florida.')}</div>
       <div class="spotlight-detail"><strong>Contact</strong>
+        <div class="spotlight-contact-details">
+          ${member.email ? `<a class="spotlight-contact-link" href="mailto:${escapeHtml(member.email)}"><span>Email</span><span>${escapeHtml(member.email)}</span></a>` : ''}
+          ${member.phone ? `<a class="spotlight-contact-link" href="tel:${sanitizePhone(member.phone)}"><span>Telephone</span><span>${escapeHtml(member.phone)}</span></a>` : ''}
+        </div>
         <div class="spotlight-contact-row">
           ${member.phone ? `<a class="contact-btn" href="tel:${safePhone}">Call</a>` : ''}
           ${member.email ? `<a class="contact-btn" href="mailto:${member.email}">Email</a>` : ''}
@@ -1513,6 +1549,14 @@ document.getElementById('member-profile-dialog').addEventListener('click', funct
 function openPortal(){document.getElementById('pw-overlay').style.display='flex';loadPortalStats();populateReferralDropdowns();} function closePortal(){document.getElementById('portal-overlay').style.display='none';document.getElementById('pw-overlay').style.display='none';} function checkPassword(){var v=document.getElementById('pw-input').value;if(v==='1956'){document.getElementById('pw-overlay').style.display='none';document.getElementById('portal-overlay').style.display='block';loadPortalStats();populateReferralDropdowns();}else{document.getElementById('pw-error').style.display='block';}} var memberTags={};function loadTaggingTab(){var pc=document.querySelector('.portal-content');if(!pc)return;var tab=document.getElementById('ptab-tagging');if(!tab){tab=document.createElement('div');tab.className='ptab';tab.id='ptab-tagging';pc.appendChild(tab);}if(!tab.querySelector('#tag-member-list')){tab.innerHTML='<h3 style="color:var(--gold);margin-bottom:16px">Member Tagging</h3><div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap"><input id="tag-search" type="text" placeholder="Search members..." oninput="filterTagMembers()" style="flex:1;min-width:180px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><input id="tag-new" type="text" placeholder="New tag name..." style="flex:1;min-width:140px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><button onclick="addTagToSelected()" style="padding:10px 18px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer">Add Tag</button></div><div id="tag-overview" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:8px"><p style="color:var(--muted);font-size:0.85rem">No tags yet.</p></div><div id="tag-member-list" style="display:flex;flex-direction:column;gap:8px"></div>';}var ml=document.getElementById('tag-member-list');if(!ml||!allMembers.length)return;ml.innerHTML=allMembers.map(function(m){var tags=memberTags[m.displayName]||[];return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--card);border-radius:8px;border:1px solid var(--border);gap:10px"><div style="flex:1"><div style="font-weight:700;color:#c8d8ff;font-size:0.88rem">'+m.displayName+'</div><div style="font-size:0.78rem;color:var(--muted)">'+m.businessName+'</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px">'+tags.map(function(t){return '<span data-n="'+m.displayName+'" data-t="'+t+'" style="background:var(--purple2);color:var(--gold2);border-radius:20px;padding:2px 10px;font-size:0.75rem;font-weight:600;border:1px solid rgba(108,63,201,0.4);cursor:pointer" onclick="removeTag(this.dataset.n,this.dataset.t)" title="Click to remove">'+t+' &times;</span>';}).join('')+'</div></div><input type="checkbox" id="tc-'+m.displayName.replace(/\s+/g,'_')+'" style="width:18px;height:18px;cursor:pointer;accent-color:var(--purple)"></div>';}).join('');updateTagOverview();}(function(){var tab=document.getElementById('ptab-tagging');if(!tab){var pc=document.querySelector('.portal-content');if(!pc)return;tab=document.createElement('div');tab.className='ptab active';tab.id='ptab-tagging';pc.appendChild(tab);}if(!tab.querySelector('#tag-member-list')){tab.innerHTML='<h3 style="color:var(--gold);margin-bottom:16px">Member Tagging</h3><div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap"><input id="tag-search" type="text" placeholder="Search members..." oninput="filterTagMembers()" style="flex:1;min-width:180px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><input id="tag-new" type="text" placeholder="New tag name..." style="flex:1;min-width:140px;padding:10px 14px;background:var(--card);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none"><button onclick="addTagToSelected()" style="padding:10px 18px;background:linear-gradient(135deg,var(--purple2),var(--purple));color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer">Add Tag</button></div><div id="tag-overview" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;padding:12px;background:var(--card);border:1px solid var(--border);border-radius:8px"><p style="color:var(--muted);font-size:0.85rem">No tags yet.</p></div><div id="tag-member-list" style="display:flex;flex-direction:column;gap:8px"></div>';}var ml=document.getElementById('tag-member-list');if(!ml||!allMembers.length)return;ml.innerHTML=allMembers.map(function(m){var tags=memberTags[m.displayName]||[];return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--card);border-radius:8px;border:1px solid var(--border);gap:10px"><div style="flex:1"><div style="font-weight:700;color:#c8d8ff;font-size:0.88rem">'+m.displayName+'</div><div style="font-size:0.78rem;color:var(--muted)">'+m.businessName+'</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px">'+tags.map(function(t){return '<span data-n="' +m.displayName+ '" data-t="' +t+ '" style="background:var(--purple2);color:var(--gold2);border-radius:20px;padding:2px 10px;font-size:0.75rem;font-weight:600;border:1px solid rgba(108,63,201,0.4);cursor:pointer" onclick="removeTag(this.dataset.n,this.dataset.t)" title="Click to remove">'+t+' &times;</span>';}).join('')+'</div></div><input type="checkbox" id="tc-'+m.displayName.replace(/\s+/g,'_')+'" style="width:18px;height:18px;cursor:pointer;accent-color:var(--purple)"></div>';}).join('');updateTagOverview();})();function filterTagMembers(){var q=document.getElementById('tag-search').value.toLowerCase();var ml=document.getElementById('tag-member-list');if(!ml)return;Array.from(ml.children).forEach(function(el){var name=el.querySelector('div[style*="font-weight:700"]');if(name)el.style.display=name.textContent.toLowerCase().includes(q)?'':'none';});}function addTagToSelected(){var tag=document.getElementById('tag-new').value.trim();if(!tag)return;var checked=document.querySelectorAll('#tag-member-list input[type=checkbox]:checked');if(!checked.length){alert('Please select at least one member.');return;}checked.forEach(function(cb){var name=cb.id.replace('tc-','').replace(/_/g,' ');if(!memberTags[name])memberTags[name]=[];if(!memberTags[name].includes(tag))memberTags[name].push(tag);cb.checked=false;});document.getElementById('tag-new').value='';loadTaggingTab();}function removeTag(name,tag){if(memberTags[name])memberTags[name]=memberTags[name].filter(function(t){return t!==tag;});loadTaggingTab();}function updateTagOverview(){var all={};Object.values(memberTags).forEach(function(tags){tags.forEach(function(t){all[t]=(all[t]||0)+1;});});var ov=document.getElementById('tag-overview');if(!ov)return;var keys=Object.keys(all);ov.innerHTML=keys.length?keys.map(function(t){return '<div style="background:rgba(108,63,201,0.12);border:1px solid rgba(108,63,201,0.3);border-radius:20px;padding:5px 14px;font-size:0.82rem;color:var(--gold2)">'+t+' <span style="color:var(--muted);font-size:0.75rem">('+all[t]+')</span></div>';}).join(''):'<p style="color:var(--muted);font-size:0.85rem">No tags created yet.</p>';}function switchTab(t){document.querySelectorAll('.portal-tab').forEach(function(x){x.classList.remove('active');});document.querySelectorAll('.ptab').forEach(function(x){x.classList.remove('active');});document.querySelector('[data-tab="'+t+'"]').classList.add('active');if(t==='tagging')loadTaggingTab();var el=document.getElementById('ptab-'+t);if(el)el.classList.add('active');} // Initialize
 fetchSheetData();
 
+</script>
+<script>
+function verificationStore(type){return JSON.parse(localStorage.getItem('swfl-'+type+'-verifications')||'[]');}
+function saveVerificationStore(type,records){localStorage.setItem('swfl-'+type+'-verifications',JSON.stringify(records));}
+function addVerificationRecord(type,form){var data=Object.fromEntries(new FormData(form).entries()),now=new Date();data.id=(type==='license'?'LIC-':'BUS-')+now.toISOString().slice(0,10).replace(/-/g,'')+'-'+String(verificationStore(type).length+1).padStart(3,'0');data.createdAt=now.toISOString();data.auditId='AUD-'+Math.random().toString(36).slice(2,10).toUpperCase();var records=verificationStore(type);records.unshift(data);saveVerificationStore(type,records);form.reset();loadVerificationRecords();}
+function loadVerificationRecords(){var panel=document.getElementById('verification-records');if(!panel)return;var render=function(type){var records=verificationStore(type);if(!records.length)return '<p class="verification-empty">No records created in this browser.</p>';return records.map(function(r){return '<article class="verification-record"><strong>'+escapeHtml(r.member||'Unnamed member')+'</strong><span>'+escapeHtml(r.id)+' · '+escapeHtml(r.status||'Not Started')+'</span><small>'+escapeHtml(r.jurisdiction||'')+(r.nextReview?' · Review '+escapeHtml(r.nextReview):'')+'</small></article>';}).join('');};panel.innerHTML='<section><h3>Professional License Verification</h3><p class="verification-note">Administrative public-record verification only. This status is not an endorsement or guarantee.</p><form onsubmit="event.preventDefault();addVerificationRecord(\'license\',this)"><input name="member" required placeholder="Member name"><input name="profession" required placeholder="Profession"><input name="authority" placeholder="Licensing authority"><input name="licenseNumber" placeholder="License number"><input name="jurisdiction" placeholder="State or jurisdiction"><select name="status"><option>Not Started</option><option>Pending Review</option><option>Verified Active</option><option>Verified Inactive</option><option>Expired</option><option>Unable to Verify</option><option>Information Conflict</option><option>Member Clarification Required</option></select><input name="nextReview" type="date"><button class="pw-submit" type="submit">Save License Review</button></form><div class="verification-list">'+render('license')+'</div></section><section><h3>Business Registration Verification</h3><p class="verification-note">Business registration is tracked separately from professional licensing and is not an endorsement.</p><form onsubmit="event.preventDefault();addVerificationRecord(\'business\',this)"><input name="member" required placeholder="Member name"><input name="publicBusinessName" required placeholder="Public business name"><input name="legalBusinessName" placeholder="Legal business name"><input name="jurisdiction" placeholder="Registration jurisdiction"><input name="registrationNumber" placeholder="Registration number"><input name="entityType" placeholder="Entity type"><select name="status"><option>Not Started</option><option>Pending Review</option><option>Registered Active</option><option>Registered Inactive</option><option>Dissolved</option><option>Unable to Verify</option><option>Information Conflict</option><option>Member Clarification Required</option><option>Not Applicable</option></select><input name="nextReview" type="date"><button class="pw-submit" type="submit">Save Business Review</button></form><div class="verification-list">'+render('business')+'</div></section>';}
+function ensureVerificationTab(){var tabs=document.querySelector('.portal-tabs'),content=document.querySelector('.portal-content');if(!tabs||!content||document.querySelector('[data-tab="verification"]'))return;var tab=document.createElement('div');tab.className='portal-tab';tab.dataset.tab='verification';tab.textContent='Verification';tab.addEventListener('click',function(){document.querySelectorAll('.portal-tab').forEach(function(x){x.classList.remove('active');});document.querySelectorAll('.ptab').forEach(function(x){x.classList.remove('active');});tab.classList.add('active');var panel=document.getElementById('ptab-verification');panel.classList.add('active');loadVerificationRecords();});tabs.appendChild(tab);var panel=document.createElement('div');panel.className='ptab';panel.id='ptab-verification';panel.innerHTML='<div id="verification-records"></div>';content.appendChild(panel);loadVerificationRecords();}
+document.addEventListener('DOMContentLoaded',ensureVerificationTab);
 </script>
 </body>
 </html>

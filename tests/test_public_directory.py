@@ -45,7 +45,8 @@ class PublicDirectoryContractTests(unittest.TestCase):
         )
         self.assertIn("swfl-alliance-contact-result", HTML)
         self.assertIn("event.source !== inquiryTransport.contentWindow", HTML)
-        self.assertIn('Delivery could not be confirmed.', HTML)
+        self.assertIn('Your message could not be confirmed as submitted.', HTML)
+        self.assertNotIn('Delivery could not be confirmed. Please try again; no success has been recorded.', HTML)
         self.assertNotIn('added to our mailing list', HTML.lower())
 
     def test_public_identity_is_southwest_florida(self):

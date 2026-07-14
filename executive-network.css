@@ -511,6 +511,11 @@ html[data-site-theme] .visitor-dialog-header{align-items:flex-start;background:#
 html[data-site-theme] .visitor-dialog-header h2{color:#fff;font-size:1.6rem;line-height:1.2;margin:4px 0 0}
 html[data-site-theme] .dialog-kicker{color:#e7c56e;font-size:.73rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
 html[data-site-theme] .visitor-dialog-body{font-size:1rem;line-height:1.6;overflow:auto;padding:24px}
+html[data-site-theme] .spotlight-contact-details{display:grid;gap:8px;margin:6px 0 12px}
+html[data-site-theme] .spotlight-contact-link{align-items:flex-start;background:#eef4f7;border:1px solid #c8d6df;border-radius:8px;color:#244862;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;padding:9px 11px;text-decoration:none}
+html[data-site-theme] .spotlight-contact-link:hover,html[data-site-theme] .spotlight-contact-link:focus-visible{border-color:#b88b2f;outline:3px solid rgba(184,139,47,.28);outline-offset:2px}
+html[data-site-theme] .spotlight-contact-link span:first-child{color:#7d5b0d;font-size:.72rem;font-weight:900;letter-spacing:.05em;text-transform:uppercase}
+html[data-site-theme] .spotlight-contact-link span:last-child{overflow-wrap:anywhere}
 html[data-site-theme] .profession-list{display:grid;gap:8px;grid-template-columns:repeat(3,minmax(0,1fr));margin:20px 0}
 html[data-site-theme] .profession-list span{background:#e8edef;border:1px solid #b6c2c7;border-left:4px solid #b88b2f;border-radius:6px;font-size:.88rem;font-weight:800;padding:10px 11px}
 html[data-site-theme] .unique-business-callout{background:#e8e1d4;border:1px solid #c7b794;border-radius:8px;margin:22px 0;padding:18px}
@@ -526,6 +531,18 @@ html[data-site-theme] .approved-profile-sections{display:grid;gap:14px;margin-to
 html[data-site-theme] .approved-profile-sections section{background:#e8edef;border:1px solid #bac6cb;border-radius:8px;padding:17px}
 html[data-site-theme] .approved-profile-sections h3{color:#183e58;margin:0 0 10px}
 html[data-site-theme] .approved-profile-sections ul{columns:2;line-height:1.55;margin:0;padding-left:20px}
+html[data-site-theme] #verification-records{display:grid;gap:20px}
+html[data-site-theme] #verification-records section{background:#f5f8fb;border:1px solid #c9d6df;border-radius:10px;padding:16px}
+html[data-site-theme] #verification-records h3{color:#183e58;margin:0 0 8px}
+html[data-site-theme] .verification-note{color:#526777;font-size:.82rem;line-height:1.45;margin:0 0 12px}
+html[data-site-theme] #verification-records form{display:grid;gap:8px;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:14px}
+html[data-site-theme] #verification-records input,html[data-site-theme] #verification-records select{background:#fff;border:1px solid #b8c8d2;border-radius:6px;color:#233c4e;padding:9px}
+html[data-site-theme] #verification-records .pw-submit{grid-column:1/-1;justify-self:start}
+html[data-site-theme] .verification-list{display:grid;gap:7px}
+html[data-site-theme] .verification-record{background:#fff;border:1px solid #d0dce4;border-left:4px solid #b88b2f;border-radius:7px;display:grid;gap:3px;padding:10px}
+html[data-site-theme] .verification-record strong{color:#183e58}
+html[data-site-theme] .verification-record span,html[data-site-theme] .verification-record small{color:#526777;font-size:.8rem}
+html[data-site-theme] .verification-empty{color:#526777;font-size:.84rem;margin:4px 0}
 html[data-site-theme] .approved-profile-sections li{break-inside:avoid;margin-bottom:5px}
 
 @media (max-width:720px){
