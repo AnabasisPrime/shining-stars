@@ -30,20 +30,6 @@ html[data-site-theme="executive-network"]{
   --ux-hero-image:url('assets/hero-executive-network.webp');
 }
 
-html[data-site-theme="regional-professional"]{
-  --ux-page:#d8e2e5;
-  --ux-page-alt:#c9d8d9;
-  --ux-panel:#fbfcfa;
-  --ux-warm:#f5f0e7;
-  --ux-teal:#376f70;
-  --ux-slate:#54697a;
-  --ux-card:#fff;
-  --ux-card-alt:#edf3f2;
-  --ux-hero-text:#173149;
-  --ux-hero-muted:#405c6d;
-  --ux-hero-image:url('assets/hero-regional-professional.webp');
-}
-
 html[data-site-theme] body{
   background:linear-gradient(180deg,var(--ux-page),var(--ux-page-alt));
   color:var(--ux-ink);
@@ -77,10 +63,6 @@ html[data-site-theme] .hero-banner::after{
   content:'';
   inset:0;
   position:absolute;
-}
-
-html[data-site-theme="regional-professional"] .hero-banner::after{
-  background:linear-gradient(90deg,rgba(250,248,241,.93) 0%,rgba(250,248,241,.62) 45%,rgba(250,248,241,.06) 72%);
 }
 
 html[data-site-theme] .hero-banner img{display:none}
@@ -323,14 +305,8 @@ html[data-site-theme] .profession-group{
   margin-bottom:30px;
   padding:22px;
 }
-html[data-site-theme="regional-professional"] .profession-group{
-  background:rgba(255,255,255,.44);
-  border-color:rgba(90,114,124,.28);
-}
 html[data-site-theme] .profession-group-header{margin-bottom:20px;text-align:left}
 html[data-site-theme] .profession-group-header h2{font-size:1.45rem}
-html[data-site-theme="regional-professional"] .profession-group-header h2{color:#173149}
-html[data-site-theme="regional-professional"] .profession-group-header p{color:#405b69}
 
 html[data-site-theme] .cat-section{
   background:transparent;
@@ -460,9 +436,7 @@ html[data-site-theme] footer{background:var(--ux-navy-deep);border-top:4px solid
   html[data-site-theme] body{font-size:16px}
   html[data-site-theme] header{height:620px}
   html[data-site-theme] .hero-banner{background-position:64% center}
-  html[data-site-theme="regional-professional"] .hero-banner{background-position:60% center}
   html[data-site-theme] .hero-banner::after{background:linear-gradient(180deg,rgba(6,22,36,.48),rgba(6,22,36,.9))}
-  html[data-site-theme="regional-professional"] .hero-banner::after{background:linear-gradient(180deg,rgba(250,248,241,.5),rgba(250,248,241,.96))}
   html[data-site-theme] .logo-wrap{align-items:flex-end;max-width:none;padding:90px 24px 212px}
   html[data-site-theme] .header-text h1{font-size:2.45rem}
   html[data-site-theme] .header-text p{font-size:1rem;margin-top:14px}
