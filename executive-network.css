@@ -37,6 +37,8 @@ html[data-site-theme] body{
   letter-spacing:0;
 }
 
+html[data-site-theme] #app{width:100%}
+
 html[data-site-theme] header{
   background:var(--ux-navy-deep);
   border-bottom:4px solid var(--ux-gold);
@@ -70,10 +72,14 @@ html[data-site-theme] .hero-banner img{display:none}
 html[data-site-theme] .logo-wrap{
   align-items:flex-start;
   inset:0;
-  justify-content:center;
-  max-width:760px;
-  padding:82px 42px 170px max(42px,calc((100vw - 1320px)/2));
+  justify-content:flex-start;
+  left:50%;
+  max-width:none;
+  padding:82px 42px 170px;
   position:absolute;
+  right:auto;
+  transform:translateX(-50%);
+  width:min(calc(100% - 2rem),1440px);
   z-index:2;
 }
 
@@ -97,11 +103,13 @@ html[data-site-theme] .header-text p{
 html[data-site-theme] .visitor-actions{
   bottom:30px;
   justify-content:flex-start;
-  left:max(42px,calc((100vw - 1320px)/2));
+  left:50%;
   margin:0;
-  padding:0;
+  padding:0 42px;
   position:absolute;
-  right:160px;
+  right:auto;
+  transform:translateX(-50%);
+  width:min(calc(100% - 2rem),1440px);
   z-index:3;
 }
 
@@ -139,6 +147,7 @@ html[data-site-theme] .inquiry-band{
   margin-top:34px;
   max-width:1360px;
   padding:0 28px;
+  width:100%;
 }
 
 html[data-site-theme] .about-shell,
@@ -284,7 +293,7 @@ html[data-site-theme] .toolbar-wrap{
   z-index:20;
 }
 
-html[data-site-theme] main{max-width:1340px;padding:32px 28px 90px}
+html[data-site-theme] main{margin-inline:auto;max-width:1340px;padding:32px 28px 90px;width:100%}
 html[data-site-theme] .section-intro{
   background:var(--ux-navy);
   border:1px solid rgba(255,255,255,.18);
@@ -325,6 +334,7 @@ html[data-site-theme] .card-grid{
   align-items:stretch;
   gap:18px;
   grid-template-columns:repeat(3,minmax(0,1fr));
+  width:100%;
 }
 
 html[data-site-theme] .member-card{
@@ -428,8 +438,12 @@ html[data-site-theme] footer{background:var(--ux-navy-deep);border-top:4px solid
 @media (max-width:980px){
   html[data-site-theme] .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   html[data-site-theme] .journey-steps{grid-template-columns:repeat(3,minmax(0,1fr))}
-  html[data-site-theme] .logo-wrap{max-width:690px;padding-left:34px}
-  html[data-site-theme] .visitor-actions{left:34px;right:34px}
+  html[data-site-theme] .logo-wrap{left:0;padding-left:34px;right:0;transform:none;width:100%}
+  html[data-site-theme] .visitor-actions{left:0;padding-inline:34px;right:0;transform:none;width:auto}
+}
+
+@media (min-width:1500px){
+  html[data-site-theme] .card-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
 
 @media (max-width:720px){
@@ -440,7 +454,7 @@ html[data-site-theme] footer{background:var(--ux-navy-deep);border-top:4px solid
   html[data-site-theme] .logo-wrap{align-items:flex-end;max-width:none;padding:90px 24px 212px}
   html[data-site-theme] .header-text h1{font-size:2.45rem}
   html[data-site-theme] .header-text p{font-size:1rem;margin-top:14px}
-  html[data-site-theme] .visitor-actions{bottom:24px;display:grid;grid-template-columns:1fr 1fr;left:20px;right:20px}
+  html[data-site-theme] .visitor-actions{bottom:24px;display:grid;grid-template-columns:1fr 1fr;left:20px;padding:0;right:20px;transform:none;width:auto}
   html[data-site-theme] .cta-btn{font-size:.82rem;padding:10px}
   html[data-site-theme] .portal-btn{right:18px;top:18px}
   html[data-site-theme] .about-band,
