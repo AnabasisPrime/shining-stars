@@ -1,0 +1,963 @@
+{
+  "url": "https://anabasisprime.github.io/shining-stars/",
+  "commit": "0319e03",
+  "generatedAt": "2026-07-14",
+  "checks": [
+    {
+      "innerWidth": 1024,
+      "innerHeight": 900,
+      "scrollWidth": 1009,
+      "bodyScrollWidth": 1009,
+      "heroText": {
+        "x": 58,
+        "y": 82,
+        "width": 720,
+        "height": 44.0625,
+        "top": 82,
+        "right": 778,
+        "bottom": 126.0625,
+        "left": 58
+      },
+      "actions": {
+        "x": 16,
+        "y": 488,
+        "width": 977,
+        "height": 48,
+        "top": 488,
+        "right": 993,
+        "bottom": 536,
+        "left": 16
+      },
+      "buttons": [
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Member Spotlight",
+          "href": "#member-spotlight",
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        }
+      ],
+      "dialogs": [
+        "member-profile-dialog",
+        "professions-dialog",
+        "meeting-dialog"
+      ],
+      "requestedWidth": 1024,
+      "requestedHeight": 900,
+      "gridColumns": "4 at >=1500px; 3 at 981-1499px; 2 at 721-980px; 1 at <=720px"
+    },
+    {
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "scrollWidth": 1265,
+      "bodyScrollWidth": 1265,
+      "heroText": {
+        "x": 58,
+        "y": 82,
+        "width": 720,
+        "height": 104.4375,
+        "top": 82,
+        "right": 778,
+        "bottom": 186.4375,
+        "left": 58
+      },
+      "actions": {
+        "x": 16,
+        "y": 488,
+        "width": 1233,
+        "height": 48,
+        "top": 488,
+        "right": 1249,
+        "bottom": 536,
+        "left": 16
+      },
+      "buttons": [
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Member Spotlight",
+          "href": "#member-spotlight",
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        }
+      ],
+      "dialogs": [
+        "member-profile-dialog",
+        "professions-dialog",
+        "meeting-dialog"
+      ],
+      "requestedWidth": 1280,
+      "requestedHeight": 800,
+      "gridColumns": "4 at >=1500px; 3 at 981-1499px; 2 at 721-980px; 1 at <=720px"
+    },
+    {
+      "innerWidth": 1366,
+      "innerHeight": 768,
+      "scrollWidth": 1351,
+      "bodyScrollWidth": 1351,
+      "heroText": {
+        "x": 58,
+        "y": 82,
+        "width": 720,
+        "height": 111.4375,
+        "top": 82,
+        "right": 778,
+        "bottom": 193.4375,
+        "left": 58
+      },
+      "actions": {
+        "x": 16,
+        "y": 488,
+        "width": 1319,
+        "height": 48,
+        "top": 488,
+        "right": 1335,
+        "bottom": 536,
+        "left": 16
+      },
+      "buttons": [
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Member Spotlight",
+          "href": "#member-spotlight",
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        }
+      ],
+      "dialogs": [
+        "member-profile-dialog",
+        "professions-dialog",
+        "meeting-dialog"
+      ],
+      "requestedWidth": 1366,
+      "requestedHeight": 768,
+      "gridColumns": "4 at >=1500px; 3 at 981-1499px; 2 at 721-980px; 1 at <=720px"
+    },
+    {
+      "innerWidth": 1440,
+      "innerHeight": 1000,
+      "scrollWidth": 1425,
+      "bodyScrollWidth": 1425,
+      "heroText": {
+        "x": 58,
+        "y": 82,
+        "width": 720,
+        "height": 117.46875,
+        "top": 82,
+        "right": 778,
+        "bottom": 199.46875,
+        "left": 58
+      },
+      "actions": {
+        "x": 16,
+        "y": 488,
+        "width": 1393,
+        "height": 48,
+        "top": 488,
+        "right": 1409,
+        "bottom": 536,
+        "left": 16
+      },
+      "buttons": [
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Member Spotlight",
+          "href": "#member-spotlight",
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        }
+      ],
+      "dialogs": [
+        "member-profile-dialog",
+        "professions-dialog",
+        "meeting-dialog"
+      ],
+      "requestedWidth": 1440,
+      "requestedHeight": 1000,
+      "gridColumns": "4 at >=1500px; 3 at 981-1499px; 2 at 721-980px; 1 at <=720px"
+    },
+    {
+      "innerWidth": 1600,
+      "innerHeight": 900,
+      "scrollWidth": 1585,
+      "bodyScrollWidth": 1585,
+      "heroText": {
+        "x": 114.5,
+        "y": 82,
+        "width": 720,
+        "height": 130.53125,
+        "top": 82,
+        "right": 834.5,
+        "bottom": 212.53125,
+        "left": 114.5
+      },
+      "actions": {
+        "x": 72.5,
+        "y": 488,
+        "width": 1440,
+        "height": 48,
+        "top": 488,
+        "right": 1512.5,
+        "bottom": 536,
+        "left": 72.5
+      },
+      "buttons": [
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Member Spotlight",
+          "href": "#member-spotlight",
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        }
+      ],
+      "dialogs": [
+        "member-profile-dialog",
+        "professions-dialog",
+        "meeting-dialog"
+      ],
+      "requestedWidth": 1600,
+      "requestedHeight": 900,
+      "gridColumns": "4 at >=1500px; 3 at 981-1499px; 2 at 721-980px; 1 at <=720px"
+    },
+    {
+      "innerWidth": 1920,
+      "innerHeight": 1080,
+      "scrollWidth": 1905,
+      "bodyScrollWidth": 1905,
+      "heroText": {
+        "x": 274.5,
+        "y": 82,
+        "width": 720,
+        "height": 130.53125,
+        "top": 82,
+        "right": 994.5,
+        "bottom": 212.53125,
+        "left": 274.5
+      },
+      "actions": {
+        "x": 232.5,
+        "y": 488,
+        "width": 1440,
+        "height": 48,
+        "top": 488,
+        "right": 1672.5,
+        "bottom": 536,
+        "left": 232.5
+      },
+      "buttons": [
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Member Spotlight",
+          "href": "#member-spotlight",
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        }
+      ],
+      "dialogs": [
+        "member-profile-dialog",
+        "professions-dialog",
+        "meeting-dialog"
+      ],
+      "requestedWidth": 1920,
+      "requestedHeight": 1080,
+      "gridColumns": "4 at >=1500px; 3 at 981-1499px; 2 at 721-980px; 1 at <=720px"
+    },
+    {
+      "innerWidth": 820,
+      "innerHeight": 1180,
+      "scrollWidth": 805,
+      "bodyScrollWidth": 805,
+      "heroText": {
+        "x": 34,
+        "y": 82,
+        "width": 720,
+        "height": 44.0625,
+        "top": 82,
+        "right": 754,
+        "bottom": 126.0625,
+        "left": 34
+      },
+      "actions": {
+        "x": 0,
+        "y": 488,
+        "width": 805,
+        "height": 48,
+        "top": 488,
+        "right": 805,
+        "bottom": 536,
+        "left": 0
+      },
+      "buttons": [
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Member Spotlight",
+          "href": "#member-spotlight",
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        }
+      ],
+      "dialogs": [
+        "member-profile-dialog",
+        "professions-dialog",
+        "meeting-dialog"
+      ],
+      "requestedWidth": 820,
+      "requestedHeight": 1180,
+      "gridColumns": "4 at >=1500px; 3 at 981-1499px; 2 at 721-980px; 1 at <=720px"
+    },
+    {
+      "innerWidth": 430,
+      "innerHeight": 932,
+      "scrollWidth": 415,
+      "bodyScrollWidth": 415,
+      "heroText": {
+        "x": 20,
+        "y": 239.4375,
+        "width": 375,
+        "height": 70.1875,
+        "top": 239.4375,
+        "right": 395,
+        "bottom": 309.625,
+        "left": 20
+      },
+      "actions": {
+        "x": 20,
+        "y": 518,
+        "width": 375,
+        "height": 104,
+        "top": 518,
+        "right": 395,
+        "bottom": 622,
+        "left": 20
+      },
+      "buttons": [
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Member Spotlight",
+          "href": "#member-spotlight",
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        }
+      ],
+      "dialogs": [
+        "member-profile-dialog",
+        "professions-dialog",
+        "meeting-dialog"
+      ],
+      "requestedWidth": 430,
+      "requestedHeight": 932,
+      "gridColumns": "4 at >=1500px; 3 at 981-1499px; 2 at 721-980px; 1 at <=720px"
+    },
+    {
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "scrollWidth": 375,
+      "bodyScrollWidth": 375,
+      "heroText": {
+        "x": 20,
+        "y": 213.84375,
+        "width": 335,
+        "height": 70.1875,
+        "top": 213.84375,
+        "right": 355,
+        "bottom": 284.03125,
+        "left": 20
+      },
+      "actions": {
+        "x": 20,
+        "y": 518,
+        "width": 335,
+        "height": 104,
+        "top": 518,
+        "right": 355,
+        "bottom": 622,
+        "left": 20
+      },
+      "buttons": [
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Member Spotlight",
+          "href": "#member-spotlight",
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Meet Our Members",
+          "href": "#members",
+          "dialog": null
+        },
+        {
+          "text": "Open Professions",
+          "href": null,
+          "dialog": "professions-dialog"
+        },
+        {
+          "text": "Visit a Meeting",
+          "href": null,
+          "dialog": "meeting-dialog"
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Full Profile",
+          "href": null,
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        },
+        {
+          "text": "Contact Leadership",
+          "href": "#contact-leadership",
+          "dialog": null
+        }
+      ],
+      "dialogs": [
+        "member-profile-dialog",
+        "professions-dialog",
+        "meeting-dialog"
+      ],
+      "requestedWidth": 390,
+      "requestedHeight": 844,
+      "gridColumns": "4 at >=1500px; 3 at 981-1499px; 2 at 721-980px; 1 at <=720px"
+    }
+  ],
+  "publicConsoleErrors": [],
+  "note": "Chrome DevTools Protocol audit; no console errors were emitted during page load."
+}
