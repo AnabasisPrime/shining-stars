@@ -1,0 +1,42 @@
+{
+  "package": "WEB-FIX-001",
+  "date": "2026-07-14",
+  "localUrl": "http://127.0.0.1:8780/",
+  "visitorPaths": [
+    {"label": "Home", "destination": "#site-home", "result": "pass"},
+    {"label": "Meet Our Members", "destination": "#members", "result": "pass"},
+    {"label": "Open Professions", "destination": "#open-professions", "result": "pass"},
+    {"label": "Visit a Meeting", "destination": "#visit-meeting", "result": "pass"},
+    {"label": "Contact Leadership", "destination": "#contact-leadership", "result": "pass"}
+  ],
+  "checks": {
+    "allInternalTargetsExist": true,
+    "placeholderLinks": 0,
+    "requiredFieldValidation": true,
+    "truthfulControlledInquiry": true,
+    "duplicatePreparationBlocked": true,
+    "copyControlResponse": "Copied. Nothing was sent.",
+    "memberMoreInfoExpansion": true,
+    "directorySearch": true,
+    "backToTop": true,
+    "consoleErrors": 0,
+    "desktopHorizontalOverflow": false,
+    "tabletHorizontalOverflow": false,
+    "mobileHorizontalOverflow": false,
+    "mobilePathActivation": true,
+    "nativeKeyboardLinks": true,
+    "visibleFocusRule": "3px solid #fff3d5"
+  },
+  "publicDirectory": {
+    "renderedMembers": 20,
+    "highestNonRudolfIndex": 16,
+    "lowestRudolfIndex": 17,
+    "presidentBusinessesLast": ["PFS Investments Inc.", "Primerica", "Vivint"],
+    "patEspositoPubliclyExcluded": true
+  },
+  "responsiveViewports": [
+    {"name": "desktop", "width": 1440, "height": 1000, "result": "pass"},
+    {"name": "tablet", "width": 820, "height": 1180, "result": "pass"},
+    {"name": "mobile", "width": 390, "height": 844, "result": "pass"}
+  ]
+}
