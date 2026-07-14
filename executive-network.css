@@ -92,6 +92,10 @@ html[data-site-theme] .header-text h1{
   text-wrap:balance;
 }
 
+html[data-site-theme] .header-text{min-width:0;width:100%}
+html[data-site-theme] .header-text h1,
+html[data-site-theme] .header-text p{overflow-wrap:anywhere}
+
 html[data-site-theme] .header-text p{
   color:var(--ux-hero-muted);
   font-size:1.12rem;
@@ -119,6 +123,7 @@ html[data-site-theme] .cta-btn{
   border-radius:8px;
   color:#173149;
   min-height:48px;
+  min-width:0;
   padding:12px 18px;
 }
 
@@ -157,6 +162,8 @@ html[data-site-theme] .visit-shell,
 html[data-site-theme] .inquiry-shell{
   border-radius:12px;
   box-shadow:var(--ux-shadow);
+  max-width:100%;
+  min-width:0;
   padding:34px 36px;
 }
 
