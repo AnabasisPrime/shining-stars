@@ -44,6 +44,7 @@ class PublicDirectoryContractTests(unittest.TestCase):
             r"const CONTACT_ENDPOINT_URL = 'https://script\.google\.com/macros/s/[A-Za-z0-9_-]+/exec';",
         )
         self.assertIn("swfl-alliance-contact-result", HTML)
+        self.assertIn("event.source !== inquiryTransport.contentWindow", HTML)
         self.assertIn('Delivery could not be confirmed.', HTML)
         self.assertNotIn('added to our mailing list', HTML.lower())
 

@@ -778,6 +778,7 @@ const CONTACT_ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbxAZ-MW1KM
 const leadershipInquiryForm = document.getElementById('leadership-inquiry-form');
 const inquiryResult = document.getElementById('inquiry-result');
 const sendInquiryButton = document.getElementById('send-inquiry');
+const inquiryTransport = document.getElementById('inquiry-transport');
 let contactSubmissionTimer;
 let activeDialogOpener = null;
 
@@ -886,7 +887,7 @@ leadershipInquiryForm.addEventListener('submit', function(event){
 });
 
 window.addEventListener('message', function(event){
-  if (!event.origin.endsWith('script.googleusercontent.com') && event.origin !== 'https://script.google.com') return;
+  if (event.source !== inquiryTransport.contentWindow) return;
   const payload = event.data || {};
   if (payload.type !== 'swfl-alliance-contact-result') return;
   clearTimeout(contactSubmissionTimer);
