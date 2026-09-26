@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anabasisprime.github.io/shining-stars/sitemap.xml

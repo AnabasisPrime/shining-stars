@@ -1,0 +1,16 @@
+{
+  "name": "SWFL Strategic Referral Alliance",
+  "short_name": "SWFL Alliance",
+  "start_url": "/shining-stars/",
+  "display": "standalone",
+  "background_color": "#071c2e",
+  "theme_color": "#071c2e",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

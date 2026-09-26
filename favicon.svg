@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SWFL Strategic Referral Alliance mark">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0b3550"/>
+      <stop offset="1" stop-color="#0f6b70"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ffe09a"/>
+      <stop offset="1" stop-color="#e8a64c"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
+  <circle cx="45" cy="18" r="8" fill="url(#sun)"/>
+  <path d="M10 43c10-8 18-8 27 0 6 5 11 6 17 2v9H10z" fill="#77c9c2" opacity=".9"/>
+  <path d="M11 47c9-6 17-6 25 0 7 5 12 6 18 2" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".92"/>
+  <path d="M30 38V19m0 3c-6-5-11-4-14 0 6 0 10 2 14 7m0-7c5-5 10-4 14 0-6 0-10 2-14 7" fill="none" stroke="#f5d27c" stroke-width="3" stroke-linecap="round"/>
+</svg>
