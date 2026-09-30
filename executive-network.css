@@ -374,6 +374,7 @@ html[data-site-theme] .photo-frame{
   height:68px;
   width:68px;
 }
+html[data-site-theme] .photo-frame img.member-photo-brad{object-position:center 34%}
 html[data-site-theme] .biz-info{grid-column:2;min-width:0}
 html[data-site-theme] .biz-info>.info-label:first-child{display:none}
 html[data-site-theme] .member-name{color:#1b2f40;font-size:1.08rem;line-height:1.25}
@@ -422,6 +423,17 @@ html[data-site-theme] .contact-btn.wide,
 html[data-site-theme] .save-contact-btn,
 html[data-site-theme] .save-contact-btn.wide{grid-column:auto}
 html[data-site-theme] .full-profile-btn{background:#183e58;color:#fff}
+html[data-site-theme] .member-website-btn::after{content:" \2197";font-size:.86em}
+html[data-site-theme] .member-cta-btn{
+  background:linear-gradient(135deg,#f0bd57,#ffd981);
+  border-color:#b77c18;
+  color:#173349;
+  font-weight:900;
+  grid-column:1/-1;
+}
+html[data-site-theme] .member-cta-btn:hover{background:linear-gradient(135deg,#ffd16f,#ffe6a4);border-color:#8e5c0a;color:#102d41}
+html[data-site-theme] .member-cta-btn:focus-visible,html[data-site-theme] .member-website-btn:focus-visible{outline:3px solid #d5aa43;outline-offset:3px}
+html[data-site-theme] .profile-dialog-actions .member-cta-btn{grid-column:auto;min-width:132px}
 html[data-site-theme] .referral-block{
   background:#eee9df;
   border-color:#d5c7aa;
@@ -829,6 +841,7 @@ html[data-site-theme] .member-meta span{background:#e2f2f0;border-color:rgba(15,
 html[data-site-theme] .contact-details{background:rgba(255,255,255,.72);border-color:rgba(12,62,90,.15);border-radius:12px}
 html[data-site-theme] .contact-btn,html[data-site-theme] .save-contact-btn{border-color:rgba(12,62,90,.22);border-radius:10px;color:#0c4963}
 html[data-site-theme] .full-profile-btn{background:linear-gradient(135deg,#0b4560,var(--launch-teal));border-color:transparent}
+html[data-site-theme] .member-cta-btn{background:linear-gradient(135deg,#f0bd57,#ffd981);border-color:#b77c18;color:#173349}
 html[data-site-theme] .member-more summary{background:rgba(255,255,255,.75);border-color:rgba(12,62,90,.2);border-radius:10px}
 
 html[data-site-theme] .profile-dialog,html[data-site-theme] .visitor-dialog{border:1px solid rgba(255,255,255,.7);border-radius:20px;box-shadow:0 32px 90px rgba(3,24,38,.48)}

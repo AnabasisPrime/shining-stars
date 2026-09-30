@@ -1073,6 +1073,10 @@ const HEADER_MAP = {
   "Email": "email",
   "Phone": "phone",
   "Website": "website",
+  "Secondary CTA URL": "secondaryCtaUrl",
+  "CTA URL": "secondaryCtaUrl",
+  "Secondary CTA Label": "secondaryCtaLabel",
+  "CTA Label": "secondaryCtaLabel",
   "Public": "public",
   "Public?": "public",
   "photoUrl": "photoUrl",
@@ -1392,9 +1396,26 @@ function verifyPresidentOrdering() {
   };
 }
 
-const MEMBER_PHOTOS={'Dan Donahoe':'https://drive.google.com/thumbnail?id=1K_zgjS3a1YpIGYIU2nzLcjiig1bCZa7g&sz=w200','Tracey Von Schmittou':'https://drive.google.com/thumbnail?id=1pJ5rYwxqW02Ru3fzcPHjjJi8CrSqI0EQ&sz=w200'};
+const MEMBER_PHOTOS={'Dan Donahoe':'https://drive.google.com/thumbnail?id=1K_zgjS3a1YpIGYIU2nzLcjiig1bCZa7g&sz=w200','Tracey Von Schmittou':'https://drive.google.com/thumbnail?id=1pJ5rYwxqW02Ru3fzcPHjjJi8CrSqI0EQ&sz=w200','Rudolf Deas':'assets/brad-web-900.jpg'};
 function sanitizePhone(phone=''){return phone.replace(/[^\d+]/g,'');}
 function normalizeWebsite(url=''){return !url ? '' : (url.startsWith('http') ? url : 'https://' + url);}
+function memberIdentityKey(member={}){
+  return `${String(member.displayName || '').trim().toLowerCase()}|${String(member.businessName || '').trim().toLowerCase()}`;
+}
+const PUBLIC_MEMBER_ACTIONS = Object.freeze({
+  'liam connelley|panescape window cleaning': Object.freeze({
+    website: 'https://www.panescape.com/',
+    secondaryCtaUrl: 'https://forms.gle/ERjWyxBCVVN4AftE8',
+    secondaryCtaLabel: 'Get a Quote'
+  })
+});
+function memberActionConfig(member={}){
+  const approved = PUBLIC_MEMBER_ACTIONS[memberIdentityKey(member)] || {};
+  const website = normalizeWebsite(approved.website || member.website || '');
+  const secondaryCtaUrl = normalizeWebsite(approved.secondaryCtaUrl || member.secondaryCtaUrl || '');
+  const secondaryCtaLabel = secondaryCtaUrl ? String(approved.secondaryCtaLabel || member.secondaryCtaLabel || 'Learn More').trim() : '';
+  return {website, secondaryCtaUrl, secondaryCtaLabel};
+}
 const APPROVED_PUBLIC_PROFILES = {
   'tracey von schmittou|preferred mediation llc': {
     heading: 'Family Law Mediation',
@@ -1457,7 +1478,7 @@ function openMemberProfile(member){
   const business = document.getElementById('member-profile-business');
   const body = document.getElementById('member-profile-body');
   const safePhone = sanitizePhone(member.phone || '');
-  const safeWebsite = normalizeWebsite(member.website || '');
+  const actions = memberActionConfig(member);
   const approved = approvedProfileFor(member);
   if (!approved) return;
 
@@ -1469,7 +1490,8 @@ function openMemberProfile(member){
     <div class="profile-dialog-actions" aria-label="Member contact options">
       ${member.phone ? `<a class="contact-btn" href="tel:${safePhone}">Call</a>` : ''}
       ${member.email ? `<a class="contact-btn" href="mailto:${escapeHtml(member.email)}">Email</a>` : ''}
-      ${member.website ? `<a class="contact-btn" href="${safeWebsite}" target="_blank" rel="noopener noreferrer">Website</a>` : ''}
+      ${actions.website ? `<a class="contact-btn member-website-btn" href="${actions.website}" target="_blank" rel="noopener noreferrer">Website</a>` : ''}
+      ${actions.secondaryCtaUrl ? `<a class="contact-btn member-cta-btn" href="${actions.secondaryCtaUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(actions.secondaryCtaLabel)}</a>` : ''}
       ${member.linkedinUrl ? `<a class="contact-btn" href="${normalizeWebsite(member.linkedinUrl)}" target="_blank" rel="noopener noreferrer">LinkedIn</a>` : ''}
       ${member.facebookUrl ? `<a class="contact-btn" href="${normalizeWebsite(member.facebookUrl)}" target="_blank" rel="noopener noreferrer">Facebook</a>` : ''}
     </div>
@@ -1519,22 +1541,24 @@ function createMemberCard(member) {
   const name = (member.displayName || member.businessName || member.email || '').toString().trim();
   const initials = name ? name.split(/\s+/).map(n => n[0]).join('').substring(0, 2).toUpperCase() : '??';
   const photoSrc = MEMBER_PHOTOS[member.displayName] || member.photoUrl;
+  const photoAlt = [member.displayName, member.businessName].filter(Boolean).join(', ') || 'Alliance member';
+  const photoClass = member.displayName === 'Rudolf Deas' ? 'member-photo-brad' : '';
   const safePhone = sanitizePhone(member.phone || '');
-  const safeWebsite = normalizeWebsite(member.website || '');
-  const showSaveContact = !!(member.displayName || member.businessName) && !!(member.phone || member.email || member.website);
+  const actions = memberActionConfig(member);
+  const showSaveContact = !!(member.displayName || member.businessName) && !!(member.phone || member.email || actions.website);
   const profileIndex = allMembers.indexOf(member);
   const memberPayload = encodeURIComponent(JSON.stringify({
     displayName: member.displayName || '',
     businessName: member.businessName || '',
     phone: member.phone || '',
     email: member.email || '',
-    website: member.website || ''
+    website: actions.website || ''
   }));
 
   return `
     <article class="member-card" data-president-owned="${isRudolfBusiness(member)}" data-member-name="${escapeHtml(member.displayName || '')}" data-business-name="${escapeHtml(member.businessName || '')}">
       <div class="photo-frame">
-        ${photoSrc ? `<img src="${photoSrc}" alt="${escapeHtml(member.displayName || member.businessName || 'Member')}">` : member.hasPhoto ? `<img src="photos/${member.displayName.replace(/\s+/g, '_')}.jpg" alt="${escapeHtml(member.displayName || member.businessName || 'Member')}">` : initials}
+        ${photoSrc ? `<img class="${photoClass}" src="${photoSrc}" alt="${escapeHtml(photoAlt)}">` : member.hasPhoto ? `<img src="photos/${member.displayName.replace(/\s+/g, '_')}.jpg" alt="${escapeHtml(photoAlt)}">` : initials}
       </div>
       <div class="biz-info">
         <span class="info-label">Who</span>
@@ -1556,7 +1580,8 @@ function createMemberCard(member) {
       <div class="contact-grid">
         ${member.phone ? `<a href="tel:${safePhone}" class="contact-btn">Call</a>` : ''}
         ${member.email ? `<a href="mailto:${member.email}" class="contact-btn">Email</a>` : ''}
-        ${member.website ? `<a href="${safeWebsite}" target="_blank" rel="noopener noreferrer" class="contact-btn ${(!member.phone && !member.email) ? 'wide' : ''}">Website</a>` : ''}
+        ${actions.website ? `<a href="${actions.website}" target="_blank" rel="noopener noreferrer" class="contact-btn member-website-btn ${(!member.phone && !member.email) ? 'wide' : ''}">Website</a>` : ''}
+        ${actions.secondaryCtaUrl ? `<a href="${actions.secondaryCtaUrl}" target="_blank" rel="noopener noreferrer" class="contact-btn member-cta-btn wide">${escapeHtml(actions.secondaryCtaLabel)}</a>` : ''}
         ${showSaveContact ? `<button type="button" class="contact-btn save-contact-btn wide" onclick='downloadVCard(JSON.parse(decodeURIComponent("${memberPayload}")))'>Save Contact</button>` : ''}
         ${hasApprovedPublicProfile(member) ? `<button type="button" class="contact-btn full-profile-btn wide" data-profile-index="${profileIndex}" aria-haspopup="dialog" onclick="openMemberProfileByIndex(this)">Full Profile</button>` : '<span class="profile-unavailable wide">Extended profile coming soon</span>'}
       </div>
